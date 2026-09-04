@@ -8,9 +8,7 @@ date: 2026-08-28
 
 <!-- CHANGE THIS: replace with your own notes -->
 
-Set up the portfolio workflow: made a repository from a template, cloned it with
-GitHub Desktop, edited files in RStudio, rendered with Quarto, and published to
-GitHub Pages.
+Set up my portfolio website workflow: I created a repository using the course template, cloned it locally via GitHub Desktop, edited source files inside RStudio, previewed outputs with Quarto rendering, and finally deployed my site on GitHub Pages.
 
 ## Key Concepts
 
@@ -36,10 +34,12 @@ sessionInfo()$R.version$version.string
 <!-- CHANGE THIS: 3-4 sentences -->
 
 What I want out of this course:
+I hope to develop the ability to independently identify appropriate spatial‑data‑analysis tools and R techniques for my future research questions. I also want to master the underlying principles and practical skills without relying on AI assistance.
 
 One thing I'm nervous about:
+I often feel anxious when I cannot fully follow the underlying logic behind programming workflows.
 
 ## Questions I Still Have
 
--
+-What should I do if I accidentally edit files inside the docs folder?
 -
