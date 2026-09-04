@@ -1,10 +1,28 @@
 ---
-title: "week-02"
-format: html
+title: "Week 2: dplyr and census"
+description: "table functions and acs data"
+date: 2026-09-04
 ---
 
----
-title: "Week 2: Census Data"
-description: "Explore census data with R."
-date: 2026-09-05
----
+## What We Did
+
+First, we have a quiz.
+
+## Key Concepts
+
+
+
+## Reflection
+
+<!-- CHANGE THIS: 3-4 sentences -->
+
+What I want out of this course:
+I hope to develop the ability to independently identify appropriate spatial‑data‑analysis tools and R techniques for my future research questions. I also want to master the underlying principles and practical skills without relying on AI assistance.
+
+One thing I'm nervous about:
+I often feel anxious when I cannot fully follow the underlying logic behind programming workflows.
+
+## Questions I Still Have
+
+-What should I do if I accidentally edit files inside the docs folder?
+-
