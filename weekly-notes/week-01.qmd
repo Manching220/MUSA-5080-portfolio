@@ -10,6 +10,8 @@ date: 2026-08-28
 
 Set up my portfolio website workflow: I created a repository using the course template, cloned it locally via GitHub Desktop, edited source files inside RStudio, previewed outputs with Quarto rendering, and finally deployed my site on GitHub Pages.
 
+I learned to distinguish between local files, GitHub repository and deployed live website, and learned to clear browser hard cache when website content does not update.
+
 ## Key Concepts
 
 Three places a file can live:
