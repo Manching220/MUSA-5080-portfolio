@@ -88,7 +88,7 @@
     "href": "assignments/index.html",
     "title": "Assignments",
     "section": "",
-    "text": "Completed assignments for MUSA 5080. New assignments appear here automatically once you add the .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Completed assignments for MUSA 5080. New assignments appear here automatically once you add the .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nAssignment 2: Who Do We Know the Least About?\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -166,5 +166,68 @@
     "title": "Week 1: Getting Set Up",
     "section": "-What should I do if I accidentally edit files inside the docs folder?",
     "text": "-What should I do if I accidentally edit files inside the docs folder?"
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html",
+    "href": "assignments/assignment2/assignment2.html",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(tidycensus)"
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html#setup",
+    "href": "assignments/assignment2/assignment2.html#setup",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(tidycensus)"
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html#the-question",
+    "href": "assignments/assignment2/assignment2.html#the-question",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "The question",
+    "text": "The question\nEvery number the American Community Survey publishes is an estimate drawn from a sample, not a count. That means every number comes with a margin of error — a statement about how wrong it might be.\nMost people ignore it. In this assignment, you won’t."
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html#instructions-delete-this-box",
+    "href": "assignments/assignment2/assignment2.html#instructions-delete-this-box",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "Instructions — delete this box",
+    "text": "Instructions — delete this box\n\nmy_state &lt;- \"CA\"        \nmy_variable &lt;- \"B25064_001\""
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html#pulling-the-data",
+    "href": "assignments/assignment2/assignment2.html#pulling-the-data",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "Pulling the data",
+    "text": "Pulling the data\n\ncounty_data &lt;- get_acs(\n  geography = \"county\",\n  variables = my_variable,\n  state = my_state,\n  year = 2023,\n  survey = \"acs5\"\n)\n\nLet’s look at what came back.\n\ndim(county_data)\n\n[1] 58  5\n\nhead(county_data)\n\n# A tibble: 6 × 5\n  GEOID NAME                         variable   estimate   moe\n  &lt;chr&gt; &lt;chr&gt;                        &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;\n1 06001 Alameda County, California   B25064_001     2318    17\n2 06003 Alpine County, California    B25064_001       NA    NA\n3 06005 Amador County, California    B25064_001     1380   106\n4 06007 Butte County, California     B25064_001     1369    31\n5 06009 Calaveras County, California B25064_001     1615   142\n6 06011 Colusa County, California    B25064_001     1139    67\n\n\nI obtained 58 rows of data, which matches the total number of counties in California. One county (Alpine County) has missing values for median gross rent."
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html#how-big-is-the-margin-of-error",
+    "href": "assignments/assignment2/assignment2.html#how-big-is-the-margin-of-error",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "How big is the margin of error?",
+    "text": "How big is the margin of error?\nA margin of error of 3,000 means something very different for an estimate of 20,000 than for an estimate of 200,000. To compare across places, we need it as a percentage.\n\ncounty_data &lt;- county_data %&gt;%\n  mutate(moe_pct =moe /estimate* 100)\n\nNow sort to see which counties are measured least reliably.\n\ncounty_data %&gt;%\n  arrange(desc(moe_pct)) %&gt;%\n  select(NAME, estimate, moe, moe_pct) %&gt;%\n  head(10)\n\n# A tibble: 10 × 4\n   NAME                         estimate   moe moe_pct\n   &lt;chr&gt;                           &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n 1 Sierra County, California        1181   705   59.7 \n 2 Trinity County, California        922   220   23.9 \n 3 Plumas County, California        1034   148   14.3 \n 4 Mono County, California          1593   212   13.3 \n 5 Mariposa County, California      1268   165   13.0 \n 6 Calaveras County, California     1615   142    8.79\n 7 Modoc County, California          818    71    8.68\n 8 Lake County, California          1292   110    8.51\n 9 Tuolumne County, California      1247   103    8.26\n10 Inyo County, California          1140    88    7.72\n\n\nSierra County has the largest relative margin of error, with a moe_pct of 59.7%."
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html#sorting-counties-into-reliability-categories",
+    "href": "assignments/assignment2/assignment2.html#sorting-counties-into-reliability-categories",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "Sorting counties into reliability categories",
+    "text": "Sorting counties into reliability categories\n\ncounty_data &lt;- county_data %&gt;%\n  mutate(reliability = case_when(\n    moe_pct &lt; 5  ~ \"High confidence\",\n    moe_pct &lt; 10 ~ \"Moderate\",\n    TRUE         ~ \"Low confidence\"\n  ))\n\ncount(county_data, reliability)\n\n# A tibble: 3 × 2\n  reliability         n\n  &lt;chr&gt;           &lt;int&gt;\n1 High confidence    39\n2 Low confidence      6\n3 Moderate           13\n\n\nAmong California counties with valid rent data, 39 are high confidence, 13 are moderate confidence, and 6 are low confidence."
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html#is-the-margin-of-error-bigger-in-small-places",
+    "href": "assignments/assignment2/assignment2.html#is-the-margin-of-error-bigger-in-small-places",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "Is the margin of error bigger in small places?",
+    "text": "Is the margin of error bigger in small places?\nTo answer this we need population and our variable side by side, in the same row. That means a wide pull.\n\ncounty_wide &lt;- get_acs(\n  geography = \"county\",\n  variables = c(myvar = my_variable,\n                pop   = \"B01003_001\"),\n  state = my_state,\n  year = 2023,\n  survey = \"acs5\",\n  output = \"wide\"\n)\n\nhead(county_wide)\n\n# A tibble: 6 × 6\n  GEOID NAME                         myvarE myvarM    popE  popM\n  &lt;chr&gt; &lt;chr&gt;                         &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 06001 Alameda County, California     2318     17 1651949    NA\n2 06003 Alpine County, California        NA     NA    1695   234\n3 06005 Amador County, California      1380    106   41029    NA\n4 06007 Butte County, California       1369     31  209470    NA\n5 06009 Calaveras County, California   1615    142   45995    NA\n6 06011 Colusa County, California      1139     67   21895    NA\n\n\n\ncounty_wide &lt;- county_wide %&gt;%\n  mutate(moe_pct = myvarM / myvarE * 100) %&gt;%\n  mutate(reliability = case_when(\n    moe_pct &lt; 5  ~ \"High confidence\",\n    moe_pct &lt; 15 ~ \"Moderate\",\n    TRUE         ~ \"Low confidence\"\n  ))\n\nNow compare the average population of counties in each reliability category.\n\ncounty_wide %&gt;%\n  group_by(reliability) %&gt;%\n  summarize(\n    n_counties = n(),\n    avg_population = mean(popE)\n  )\n\n# A tibble: 3 × 3\n  reliability     n_counties avg_population\n  &lt;chr&gt;                &lt;int&gt;          &lt;dbl&gt;\n1 High confidence         39        989118.\n2 Low confidence           3          6771.\n3 Moderate                16         40430.\n\n\nThe average population of counties in the high-reliability group was 989,118, while the average population of counties in the low-reliability group was only 6,771. This pattern shows counties with smaller populations tend to have higher relative error and lower confidence in ACS rent estimates."
+  },
+  {
+    "objectID": "assignments/assignment2/assignment2.html#what-this-means-for-policy",
+    "href": "assignments/assignment2/assignment2.html#what-this-means-for-policy",
+    "title": "Assignment 2: Who Do We Know the Least About?",
+    "section": "What this means for policy",
+    "text": "What this means for policy\nWhen using data from the ACS to analyze urban policy, we need to pay attention to the margin of error, particularly for small, sparsely populated counties. In California, counties with extremely small populations, such as Sierra County, have very high relative errors, so we cannot rely too heavily on rent estimates from these counties when making policy decisions.\nThe primary source of this uncertainty is the small sample size of the survey. Because the number of survey respondents is limited, the estimates are subject to greater variation.\nBefore applying census spatial data in urban planning work, we should check if these estimates are reliable. We cannot take every ACS figure as a hard truth. Recognizing estimation errors prevents us from making poor policy decisions that rely on shaky statistical results."
   }
 ]
