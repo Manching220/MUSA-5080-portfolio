@@ -1,122 +1,45 @@
 [
   {
-    "objectID": "weekly-notes/week-02.html",
-    "href": "weekly-notes/week-02.html",
-    "title": "Week 2: dplyr and census",
+    "objectID": "weekly-notes/week-03.html",
+    "href": "weekly-notes/week-03.html",
+    "title": "Week 3: ggploy",
     "section": "",
     "text": "First, we have a quiz."
   },
   {
-    "objectID": "weekly-notes/week-02.html#what-we-did",
-    "href": "weekly-notes/week-02.html#what-we-did",
-    "title": "Week 2: dplyr and census",
+    "objectID": "weekly-notes/week-03.html#what-we-did",
+    "href": "weekly-notes/week-03.html#what-we-did",
+    "title": "Week 3: ggploy",
     "section": "",
     "text": "First, we have a quiz."
   },
   {
-    "objectID": "weekly-notes/week-02.html#key-concepts",
-    "href": "weekly-notes/week-02.html#key-concepts",
-    "title": "Week 2: dplyr and census",
+    "objectID": "weekly-notes/week-03.html#key-concepts",
+    "href": "weekly-notes/week-03.html#key-concepts",
+    "title": "Week 3: ggploy",
     "section": "Key Concepts",
     "text": "Key Concepts"
   },
   {
-    "objectID": "weekly-notes/week-02.html#reflection",
-    "href": "weekly-notes/week-02.html#reflection",
-    "title": "Week 2: dplyr and census",
+    "objectID": "weekly-notes/week-03.html#reflection",
+    "href": "weekly-notes/week-03.html#reflection",
+    "title": "Week 3: ggploy",
     "section": "Reflection",
     "text": "Reflection\n\nWhat I want out of this course: I hope to develop the ability to independently identify appropriate spatial‑data‑analysis tools and R techniques for my future research questions. I also want to master the underlying principles and practical skills without relying on AI assistance.\nOne thing I’m nervous about: I often feel anxious when I cannot fully follow the underlying logic behind programming workflows."
   },
   {
-    "objectID": "weekly-notes/week-02.html#questions-i-still-have",
-    "href": "weekly-notes/week-02.html#questions-i-still-have",
-    "title": "Week 2: dplyr and census",
+    "objectID": "weekly-notes/week-03.html#questions-i-still-have",
+    "href": "weekly-notes/week-03.html#questions-i-still-have",
+    "title": "Week 3: ggploy",
     "section": "Questions I Still Have",
     "text": "Questions I Still Have"
   },
   {
-    "objectID": "weekly-notes/week-02.html#what-should-i-do-if-i-accidentally-edit-files-inside-the-docs-folder",
-    "href": "weekly-notes/week-02.html#what-should-i-do-if-i-accidentally-edit-files-inside-the-docs-folder",
-    "title": "Week 2: dplyr and census",
+    "objectID": "weekly-notes/week-03.html#what-should-i-do-if-i-accidentally-edit-files-inside-the-docs-folder",
+    "href": "weekly-notes/week-03.html#what-should-i-do-if-i-accidentally-edit-files-inside-the-docs-folder",
+    "title": "Week 3: ggploy",
     "section": "-What should I do if I accidentally edit files inside the docs folder?",
     "text": "-What should I do if I accidentally edit files inside the docs folder?"
-  },
-  {
-    "objectID": "weekly-notes/index.html",
-    "href": "weekly-notes/index.html",
-    "title": "Weekly Notes",
-    "section": "",
-    "text": "Notes from each week of MUSA 5080. New entries appear here automatically — add a .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: dplyr and census\n\n\ntable functions and acs data\n\n\n\n\n\nSep 4, 2026\n\n\n\n\n\n\n\nWeek 3: ggploy\n\n\ntable functions and acs data\n\n\n\n\n\nSep 4, 2026\n\n\n\n\n\n\n\nWeek 1: Getting Set Up\n\n\nFirst impressions, and getting the workflow running.\n\n\n\n\n\nAug 28, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "data/readme.html",
-    "href": "data/readme.html",
-    "title": "",
-    "section": "",
-    "text": "Code\n\n\n\n\nData files for MUSA 5080\nDownload assignment data from Canvas and save it here. Do not rename the files! Have a nice day :)"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "Write a few paragraphs about yourself here: where you came from before MUSA, what drew you to urban spatial analytics, and what you’re hoping to do with it."
-  },
-  {
-    "objectID": "about.html#background",
-    "href": "about.html#background",
-    "title": "About Me",
-    "section": "",
-    "text": "Write a few paragraphs about yourself here: where you came from before MUSA, what drew you to urban spatial analytics, and what you’re hoping to do with it."
-  },
-  {
-    "objectID": "about.html#skills",
-    "href": "about.html#skills",
-    "title": "About Me",
-    "section": "Skills",
-    "text": "Skills\n\n\nLanguages & Tools: R, Quarto, Git\nSpatial: (add as you learn)\nData: US Census / ACS via tidycensus"
-  },
-  {
-    "objectID": "about.html#contact",
-    "href": "about.html#contact",
-    "title": "About Me",
-    "section": "Contact",
-    "text": "Contact\n\n\nEmail: your-email@upenn.edu\nGitHub: @your-username"
-  },
-  {
-    "objectID": "assignments/index.html",
-    "href": "assignments/index.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Completed assignments for MUSA 5080. New assignments appear here automatically once you add the .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nAssignment 2: Who Do We Know the Least About?\n\n\n\n\n\n\n\n\nSep 25, 2026\n\n\n\n\n\n\n\nVerify the Claim: Poverty Rate Change in Philadelphia Census Tracts\n\n\n\n\n\n\n\n\nSep 25, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
-    "section": "",
-    "text": "Welcome to my portfolio for MUSA 5080: Public Policy Analytics at the University of Pennsylvania.\nThis site documents my work in the Master of Urban Spatial Analytics program — weekly notes, course assignments, and a final project applying data analysis to urban policy questions.\n\n\n\nI’m a student in the MUSA program at Penn. My background is in Urban Planning, and I’m interested in using spatial tools to understand urban issues.\n\n\n\n\nWeekly Notes — what I’m learning each week\nAssignments — analyses completed for the course\nAbout — more background and how to reach me\n\n\n\n\n\n\nEmail: manchiho@upenn.edu\nGitHub: @Manching220"
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Home",
-    "section": "",
-    "text": "I’m a student in the MUSA program at Penn. My background is in Urban Planning, and I’m interested in using spatial tools to understand urban issues."
-  },
-  {
-    "objectID": "index.html#what-youll-find-here",
-    "href": "index.html#what-youll-find-here",
-    "title": "Home",
-    "section": "",
-    "text": "Weekly Notes — what I’m learning each week\nAssignments — analyses completed for the course\nAbout — more background and how to reach me"
-  },
-  {
-    "objectID": "index.html#get-in-touch",
-    "href": "index.html#get-in-touch",
-    "title": "Home",
-    "section": "",
-    "text": "Email: manchiho@upenn.edu\nGitHub: @Manching220"
   },
   {
     "objectID": "weekly-notes/week-01.html",
@@ -166,6 +89,41 @@
     "title": "Week 1: Getting Set Up",
     "section": "-What should I do if I accidentally edit files inside the docs folder?",
     "text": "-What should I do if I accidentally edit files inside the docs folder?"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "Welcome to my portfolio for MUSA 5080: Public Policy Analytics at the University of Pennsylvania.\nThis site documents my work in the Master of Urban Spatial Analytics program — weekly notes, course assignments, and a final project applying data analysis to urban policy questions.\n\n\n\nI’m a student in the MUSA program at Penn. My background is in Urban Planning, and I’m interested in using spatial tools to understand urban issues.\n\n\n\n\nWeekly Notes — what I’m learning each week\nAssignments — analyses completed for the course\nAbout — more background and how to reach me\n\n\n\n\n\n\nEmail: manchiho@upenn.edu\nGitHub: @Manching220"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Home",
+    "section": "",
+    "text": "I’m a student in the MUSA program at Penn. My background is in Urban Planning, and I’m interested in using spatial tools to understand urban issues."
+  },
+  {
+    "objectID": "index.html#what-youll-find-here",
+    "href": "index.html#what-youll-find-here",
+    "title": "Home",
+    "section": "",
+    "text": "Weekly Notes — what I’m learning each week\nAssignments — analyses completed for the course\nAbout — more background and how to reach me"
+  },
+  {
+    "objectID": "index.html#get-in-touch",
+    "href": "index.html#get-in-touch",
+    "title": "Home",
+    "section": "",
+    "text": "Email: manchiho@upenn.edu\nGitHub: @Manching220"
+  },
+  {
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Completed assignments for MUSA 5080. New assignments appear here automatically once you add the .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nAssignment 2: Who Do We Know the Least About?\n\n\n\n\n\n\n\n\nSep 25, 2026\n\n\n\n\n\n\n\nVerify the Claim: Poverty Rate Change in Philadelphia Census Tracts\n\n\n\n\n\n\n\n\nSep 25, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments/assignment2/assignment2.html",
@@ -231,74 +189,46 @@
     "text": "What this means for policy\nWhen using data from the ACS to analyze urban policy, we need to pay attention to the margin of error, particularly for small, sparsely populated counties. In California, counties with extremely small populations, such as Sierra County, have very high relative errors, so we cannot rely too heavily on rent estimates from these counties when making policy decisions.\nThe primary source of this uncertainty is the small sample size of the survey. Because the number of survey respondents is limited, the estimates are subject to greater variation.\nBefore applying census spatial data in urban planning work, we should check if these estimates are reliable. We cannot take every ACS figure as a hard truth. Recognizing estimation errors prevents us from making poor policy decisions that rely on shaky statistical results."
   },
   {
-    "objectID": "assignments/assignment3.html",
-    "href": "assignments/assignment3.html",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "Write a few paragraphs about yourself here: where you came from before MUSA, what drew you to urban spatial analytics, and what you’re hoping to do with it."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "",
+    "text": "Write a few paragraphs about yourself here: where you came from before MUSA, what drew you to urban spatial analytics, and what you’re hoping to do with it."
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About Me",
+    "section": "Skills",
+    "text": "Skills\n\n\nLanguages & Tools: R, Quarto, Git\nSpatial: (add as you learn)\nData: US Census / ACS via tidycensus"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About Me",
+    "section": "Contact",
+    "text": "Contact\n\n\nEmail: your-email@upenn.edu\nGitHub: @your-username"
+  },
+  {
+    "objectID": "assignments/assignment3.1.html",
+    "href": "assignments/assignment3.1.html",
     "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
     "section": "",
-    "text": "Show code\nlibrary(tidyverse)\nlibrary(tidycensus)"
+    "text": "Show code\nlibrary(tidyverse)\nlibrary(tidycensus)\nlibrary(gt)\ncensus_api_key(\"25b37b95357740c0307aee6ca7bc15cf625979b5\", install = TRUE, overwrite = TRUE)\n\n\n[1] \"25b37b95357740c0307aee6ca7bc15cf625979b5\""
   },
   {
-    "objectID": "assignments/assignment3.html#setup",
-    "href": "assignments/assignment3.html#setup",
+    "objectID": "assignments/assignment3.1.html#setup",
+    "href": "assignments/assignment3.1.html#setup",
     "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
     "section": "",
-    "text": "Show code\nlibrary(tidyverse)\nlibrary(tidycensus)"
-  },
-  {
-    "objectID": "assignments/assignment3.html#part-1reconstruct",
-    "href": "assignments/assignment3.html#part-1reconstruct",
-    "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
-    "section": "Part 1:Reconstruct",
-    "text": "Part 1:Reconstruct\nThe article from WHYY compares poverty across Philadelphia neighborhoods using two ACS 5-year datasets: 2006–2010 and 2013–2017. I use ACS table B17001, which contains poverty status counts:\nB17001_001: Total population for poverty status calculation B17001_002: Population whose income falls below the poverty line.\nAssumptions: This analysis runs at the census tract level, not the custom neighborhood boundaries the reporter used. The journalist combined several census tracts to create their own neighborhood areas and did not share which tracts went into each neighborhood. That means my tract-level results will not perfectly match the neighborhood numbers shown in the article.\nI am assuming the article uses the standard ACS poverty definition found in table B17001.\nSome tracts return NA values, mostly areas with no permanent residents, such as airports or large industrial sites. I will drop these tracts from my analysis.\nOverlap Check: These two ACS time windows, 2006–2010 and 2013–2017, do not overlap. There is a two-year gap between them. The survey samples are independent, so I can calculate changes over time without worrying about bias caused by overlapping samples."
-  },
-  {
-    "objectID": "assignments/assignment3.html#part-2test",
-    "href": "assignments/assignment3.html#part-2test",
-    "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
-    "section": "Part 2:Test",
-    "text": "Part 2:Test\nI calculate poverty rates and their associated margins of error using the moe_prop() function. Jurjevich and co-authors (2018) set reliability rules based on coefficient of variation (CV): - CV &lt;12%: Reliable - 12% ≤ CV ≤40%: Somewhat reliable - CV &gt;40%: Unreliable\nI compute the poverty rate change between the two time periods, plus the MOE for this change. I test statistical significance at the 90% confidence level. A change counts as statistically distinguishable from zero when the absolute value of the z-score is greater than 1.645.\n#| message: false #| warning: false phl_0610 &lt;- get_acs( geography = “tract”, state = “PA”, county = “Philadelphia”, year = 2010, survey = “acs5”, variables = c(total = “B17001_001”, poverty = “B17001_002”) ) %&gt;% pivot_wider(names_from = variable, values_from = c(estimate, moe)) %&gt;% rename( total_0610 = estimate_total, moe_total_0610 = moe_total, poverty_0610 = estimate_poverty, moe_poverty_0610 = moe_poverty ) phl_1317 &lt;- get_acs( geography = “tract”, state = “PA”, county = “Philadelphia”, year = 2017, survey = “acs5”, variables = c(total = “B17001_001”, poverty = “B17001_002”) ) %&gt;% pivot_wider(names_from = variable, values_from = c(estimate, moe)) %&gt;% rename( total_1317 = estimate_total, moe_total_1317 = moe_total, poverty_1317 = estimate_poverty, moe_poverty_1317 = moe_poverty ) phl_tract &lt;- inner_join(phl_0610, phl_1317, by = c(“GEOID”, “NAME”))\n#| message: false #| warning: false phl_tract_calc &lt;- phl_tract %&gt;% mutate( povrate_0610 = poverty_0610 / total_0610, moe_povrate_0610 = moe_prop(poverty_0610, total_0610, moe_poverty_0610, moe_total_0610), cv_0610 = (moe_povrate_0610 / 1.645) / povrate_0610 * 100, reliability_0610 = case_when( cv_0610 &lt; 12 ~ “Reliable”, cv_0610 &lt;= 40 ~ “Somewhat reliable”, TRUE ~ “Unreliable” ), povrate_1317 = poverty_1317 / total_1317, moe_povrate_1317 = moe_prop(poverty_1317, total_1317, moe_poverty_1317, moe_total_1317), cv_1317 = (moe_povrate_1317 / 1.645) / povrate_1317 * 100, reliability_1317 = case_when( cv_1317 &lt; 12 ~ “Reliable”, cv_1317 &lt;= 40 ~ “Somewhat reliable”, TRUE ~ “Unreliable” ), povrate_change = povrate_1317 - povrate_0610, se_1 = moe_povrate_0610 / 1.645, se_2 = moe_povrate_1317 / 1.645, se_diff = sqrt(se_1^2 + se_2^2), moe_change = se_diff * 1.645, z_score = povrate_change / se_diff, sig_change = abs(z_score) &gt; 1.645 ) %&gt;% drop_na(povrate_change) summary_sig &lt;- phl_tract_calc %&gt;% summarise( total_tracts = n(), tracts_sig_change = sum(sig_change, na.rm = TRUE), tracts_no_sig_change = sum(!sig_change, na.rm = TRUE) ) summary_sig\n#| fig-cap: “Table 1: Tract reliability classification for 2013–2017 poverty rate” reliability_table &lt;- phl_tract_calc %&gt;% mutate( dot = case_when( cv_1317 &lt;12 ~ “🟢”, cv_1317 &lt;=40 ~ “🟡”, TRUE ~ “🔴” ), NAME = str_remove(NAME, “, Philadelphia County, Pennsylvania”) ) %&gt;% arrange(desc(cv_1317)) %&gt;% select(dot, NAME, povrate_1317, moe_povrate_1317, cv_1317, reliability_1317) reliability_table %&gt;% gt() %&gt;% fmt_number(columns = c(povrate_1317, moe_povrate_1317), decimals = 3) %&gt;% fmt_number(columns = cv_1317, decimals = 1) %&gt;% cols_label( dot = ““, NAME =”Census Tract”, povrate_1317 = “Poverty Rate”, moe_povrate_1317 = “MOE”, cv_1317 = “CV (%)”, reliability_1317 = “Reliability” ) %&gt;% cols_align(align = “center”, columns = dot) %&gt;% tab_header( title = “Poverty Rate Reliability by Tract”, subtitle = “Philadelphia ACS 2013–2017 5-year estimates” ) %&gt;% tab_source_note( “Thresholds follow Jurjevich et al. (2018): CV &lt;12% Reliable, 12–40% Somewhat reliable, &gt;40% Unreliable.” )"
-  },
-  {
-    "objectID": "weekly-notes/week-03.html",
-    "href": "weekly-notes/week-03.html",
-    "title": "Week 3: ggploy",
-    "section": "",
-    "text": "First, we have a quiz."
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#what-we-did",
-    "href": "weekly-notes/week-03.html#what-we-did",
-    "title": "Week 3: ggploy",
-    "section": "",
-    "text": "First, we have a quiz."
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#key-concepts",
-    "href": "weekly-notes/week-03.html#key-concepts",
-    "title": "Week 3: ggploy",
-    "section": "Key Concepts",
-    "text": "Key Concepts"
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#reflection",
-    "href": "weekly-notes/week-03.html#reflection",
-    "title": "Week 3: ggploy",
-    "section": "Reflection",
-    "text": "Reflection\n\nWhat I want out of this course: I hope to develop the ability to independently identify appropriate spatial‑data‑analysis tools and R techniques for my future research questions. I also want to master the underlying principles and practical skills without relying on AI assistance.\nOne thing I’m nervous about: I often feel anxious when I cannot fully follow the underlying logic behind programming workflows."
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#questions-i-still-have",
-    "href": "weekly-notes/week-03.html#questions-i-still-have",
-    "title": "Week 3: ggploy",
-    "section": "Questions I Still Have",
-    "text": "Questions I Still Have"
-  },
-  {
-    "objectID": "weekly-notes/week-03.html#what-should-i-do-if-i-accidentally-edit-files-inside-the-docs-folder",
-    "href": "weekly-notes/week-03.html#what-should-i-do-if-i-accidentally-edit-files-inside-the-docs-folder",
-    "title": "Week 3: ggploy",
-    "section": "-What should I do if I accidentally edit files inside the docs folder?",
-    "text": "-What should I do if I accidentally edit files inside the docs folder?"
+    "text": "Show code\nlibrary(tidyverse)\nlibrary(tidycensus)\nlibrary(gt)\ncensus_api_key(\"25b37b95357740c0307aee6ca7bc15cf625979b5\", install = TRUE, overwrite = TRUE)\n\n\n[1] \"25b37b95357740c0307aee6ca7bc15cf625979b5\""
   },
   {
     "objectID": "assignments/assignment3.1.html#part-1-reconstruct",
@@ -329,17 +259,101 @@
     "text": "Part 4: Rewrite\nNew census estimates show rising poverty across many Philadelphia neighborhoods, with a notable share of white residents living below the poverty line. But not every neighborhood’s poverty shift is statistically meaningful. ACS estimates carry sampling error, and small-area numbers can be noisy. While many tracts show real, measurable increases, some apparent changes may only reflect random survey variation. These findings confirm inequality persists across Philadelphia, but neighborhood poverty figures should be read with caution."
   },
   {
-    "objectID": "assignments/assignment3.1.html",
-    "href": "assignments/assignment3.1.html",
+    "objectID": "data/readme.html",
+    "href": "data/readme.html",
+    "title": "",
+    "section": "",
+    "text": "Code\n\n\n\n\nData files for MUSA 5080\nDownload assignment data from Canvas and save it here. Do not rename the files! Have a nice day :)"
+  },
+  {
+    "objectID": "weekly-notes/index.html",
+    "href": "weekly-notes/index.html",
+    "title": "Weekly Notes",
+    "section": "",
+    "text": "Notes from each week of MUSA 5080. New entries appear here automatically — add a .qmd file to this folder and render.\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: dplyr and census\n\n\ntable functions and acs data\n\n\n\n\n\nSep 4, 2026\n\n\n\n\n\n\n\nWeek 3: ggploy\n\n\ntable functions and acs data\n\n\n\n\n\nSep 4, 2026\n\n\n\n\n\n\n\nWeek 1: Getting Set Up\n\n\nFirst impressions, and getting the workflow running.\n\n\n\n\n\nAug 28, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "weekly-notes/week-02.html",
+    "href": "weekly-notes/week-02.html",
+    "title": "Week 2: dplyr and census",
+    "section": "",
+    "text": "First, we have a quiz."
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#what-we-did",
+    "href": "weekly-notes/week-02.html#what-we-did",
+    "title": "Week 2: dplyr and census",
+    "section": "",
+    "text": "First, we have a quiz."
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#key-concepts",
+    "href": "weekly-notes/week-02.html#key-concepts",
+    "title": "Week 2: dplyr and census",
+    "section": "Key Concepts",
+    "text": "Key Concepts"
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#reflection",
+    "href": "weekly-notes/week-02.html#reflection",
+    "title": "Week 2: dplyr and census",
+    "section": "Reflection",
+    "text": "Reflection\n\nWhat I want out of this course: I hope to develop the ability to independently identify appropriate spatial‑data‑analysis tools and R techniques for my future research questions. I also want to master the underlying principles and practical skills without relying on AI assistance.\nOne thing I’m nervous about: I often feel anxious when I cannot fully follow the underlying logic behind programming workflows."
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#questions-i-still-have",
+    "href": "weekly-notes/week-02.html#questions-i-still-have",
+    "title": "Week 2: dplyr and census",
+    "section": "Questions I Still Have",
+    "text": "Questions I Still Have"
+  },
+  {
+    "objectID": "weekly-notes/week-02.html#what-should-i-do-if-i-accidentally-edit-files-inside-the-docs-folder",
+    "href": "weekly-notes/week-02.html#what-should-i-do-if-i-accidentally-edit-files-inside-the-docs-folder",
+    "title": "Week 2: dplyr and census",
+    "section": "-What should I do if I accidentally edit files inside the docs folder?",
+    "text": "-What should I do if I accidentally edit files inside the docs folder?"
+  },
+  {
+    "objectID": "assignments/assignment3.html",
+    "href": "assignments/assignment3.html",
     "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
     "section": "",
     "text": "Show code\nlibrary(tidyverse)\nlibrary(tidycensus)\nlibrary(gt)\ncensus_api_key(\"25b37b95357740c0307aee6ca7bc15cf625979b5\", install = TRUE, overwrite = TRUE)\n\n\n[1] \"25b37b95357740c0307aee6ca7bc15cf625979b5\""
   },
   {
-    "objectID": "assignments/assignment3.1.html#setup",
-    "href": "assignments/assignment3.1.html#setup",
+    "objectID": "assignments/assignment3.html#setup",
+    "href": "assignments/assignment3.html#setup",
     "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
     "section": "",
     "text": "Show code\nlibrary(tidyverse)\nlibrary(tidycensus)\nlibrary(gt)\ncensus_api_key(\"25b37b95357740c0307aee6ca7bc15cf625979b5\", install = TRUE, overwrite = TRUE)\n\n\n[1] \"25b37b95357740c0307aee6ca7bc15cf625979b5\""
+  },
+  {
+    "objectID": "assignments/assignment3.html#part-1-reconstruct",
+    "href": "assignments/assignment3.html#part-1-reconstruct",
+    "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
+    "section": "Part 1: Reconstruct",
+    "text": "Part 1: Reconstruct\nThe WHYY story compares poverty across Philadelphia neighborhoods using two separate 5-year ACS datasets: 2006–2010 and 2013–2017. I pull data from ACS table B17001, which tracks population counts grouped by poverty status:\n\nB17001_001: Total population counted for poverty calculations\nB17001_002: People with incomes below the poverty threshold\n\nI use the acs5 product here because the news article relies on these 5-year rolling ACS estimates.\n\nAssumptions\nThis analysis runs at the census tract level, not the custom neighborhood boundaries the reporter used. The journalist combined several census tracts to create their own neighborhood areas and did not share which tracts went into each neighborhood. That means my tract-level results will not perfectly match the neighborhood numbers shown in the article.\nI am assuming the article uses the standard ACS poverty definition found in table B17001.\nSome tracts return NA values, mostly areas with no permanent residents, such as airports or large industrial sites. I will drop these tracts from my analysis.\n\n\nOverlap Check\nThese two ACS time windows, 2006–2010 and 2013–2017, do not overlap. There is a two-year gap between them. The survey samples are independent, so I can calculate changes over time without worrying about bias caused by overlapping samples.\n\n\nShow code\nphl_0610 &lt;- get_acs(\n  geography = \"tract\",\n  state = \"PA\",\n  county = \"Philadelphia\",\n  year = 2010,\n  survey = \"acs5\",\n  variables = c(total = \"B17001_001\", poverty = \"B17001_002\")\n) %&gt;%\n  pivot_wider(names_from = variable, values_from = c(estimate, moe)) %&gt;%\n  rename(\n    total_0610 = estimate_total,\n    moe_total_0610 = moe_total,\n    poverty_0610 = estimate_poverty,\n    moe_poverty_0610 = moe_poverty\n  )\n\nphl_1317 &lt;- get_acs(\n  geography = \"tract\",\n  state = \"PA\",\n  county = \"Philadelphia\",\n  year = 2017,\n  survey = \"acs5\",\n  variables = c(total = \"B17001_001\", poverty = \"B17001_002\")\n) %&gt;%\n  pivot_wider(names_from = variable, values_from = c(estimate, moe)) %&gt;%\n  rename(\n    total_1317 = estimate_total,\n    moe_total_1317 = moe_total,\n    poverty_1317 = estimate_poverty,\n    moe_poverty_1317 = moe_poverty\n  )\n\nphl_tract &lt;- inner_join(phl_0610, phl_1317, by = c(\"GEOID\", \"NAME\"))"
+  },
+  {
+    "objectID": "assignments/assignment3.html#part-2-test",
+    "href": "assignments/assignment3.html#part-2-test",
+    "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
+    "section": "Part 2: Test",
+    "text": "Part 2: Test\nI calculate poverty rates and their associated margins of error using the moe_prop() function. Jurjevich and co-authors (2018) set reliability rules based on coefficient of variation (CV):\n\nCV &lt; 12%: Reliable\n12% ≤ CV ≤ 40%: Somewhat reliable\nCV &gt; 40%: Unreliable\n\nI compute the poverty rate change between the two time periods, plus the MOE for this change. I test statistical significance at the 90% confidence level. A change counts as statistically distinguishable from zero when the absolute value of the z-score is greater than 1.645.\n\n\nShow code\nphl_tract_calc &lt;- phl_tract %&gt;%\n  mutate(\n    povrate_0610 = poverty_0610 / total_0610,\n    moe_povrate_0610 = moe_prop(poverty_0610, total_0610, moe_poverty_0610, moe_total_0610),\n    cv_0610 = (moe_povrate_0610 / 1.645) / povrate_0610 * 100,\n    reliability_0610 = case_when(\n      cv_0610 &lt; 12 ~ \"Reliable\",\n      cv_0610 &lt;= 40 ~ \"Somewhat reliable\",\n      TRUE ~ \"Unreliable\"\n    ),\n    povrate_1317 = poverty_1317 / total_1317,\n    moe_povrate_1317 = moe_prop(poverty_1317, total_1317, moe_poverty_1317, moe_total_1317),\n    cv_1317 = (moe_povrate_1317 / 1.645) / povrate_1317 * 100,\n    reliability_1317 = case_when(\n      cv_1317 &lt; 12 ~ \"Reliable\",\n      cv_1317 &lt;= 40 ~ \"Somewhat reliable\",\n      TRUE ~ \"Unreliable\"\n    ),\n    povrate_change = povrate_1317 - povrate_0610,\n    se_1 = moe_povrate_0610 / 1.645,\n    se_2 = moe_povrate_1317 / 1.645,\n    se_diff = sqrt(se_1^2 + se_2^2),\n    moe_change = se_diff * 1.645,\n    z_score = povrate_change / se_diff,\n    sig_change = abs(z_score) &gt; 1.645\n  ) %&gt;%\n  drop_na(povrate_change)\n\nsummary_sig &lt;- phl_tract_calc %&gt;%\n  summarise(\n    total_tracts = n(),\n    tracts_sig_change = sum(sig_change, na.rm = TRUE),\n    tracts_no_sig_change = sum(!sig_change, na.rm = TRUE)\n  )\nsummary_sig\n\n\n# A tibble: 1 × 3\n  total_tracts tracts_sig_change tracts_no_sig_change\n         &lt;int&gt;             &lt;int&gt;                &lt;int&gt;\n1          376                63                  313\n\n\n\nReliability Table\n\n\nShow code\nreliability_table &lt;- phl_tract_calc %&gt;%\n  mutate(\n    dot = case_when(\n      cv_1317 &lt; 12 ~ \"🟢\",\n      cv_1317 &lt;= 40 ~ \"🟡\",\n      TRUE ~ \"🔴\"\n    ),\n    NAME = str_remove(NAME, \", Philadelphia County, Pennsylvania\")\n  ) %&gt;%\n  arrange(desc(cv_1317)) %&gt;%\n  select(dot, NAME, povrate_1317, moe_povrate_1317, cv_1317, reliability_1317)\n\nreliability_table %&gt;%\n  gt() %&gt;%\n  fmt_number(columns = c(povrate_1317, moe_povrate_1317), decimals = 3) %&gt;%\n  fmt_number(columns = cv_1317, decimals = 1) %&gt;%\n  cols_label(\n    dot = \"\",\n    NAME = \"Census Tract\",\n    povrate_1317 = \"Poverty Rate\",\n    moe_povrate_1317 = \"MOE\",\n    cv_1317 = \"CV (%)\",\n    reliability_1317 = \"Reliability\"\n  ) %&gt;%\n  cols_align(align = \"center\", columns = dot) %&gt;%\n  tab_header(\n    title = \"Poverty Rate Reliability by Tract\",\n    subtitle = \"Philadelphia ACS 2013–2017 5-year estimates\"\n  ) %&gt;%\n  tab_source_note(\n    \"Thresholds follow Jurjevich et al. (2018): CV &lt; 12% Reliable, 12–40% Somewhat reliable, &gt; 40% Unreliable.\"\n  )\n\n\n\n\n\n\n\n\nPoverty Rate Reliability by Tract\n\n\nPhiladelphia ACS 2013–2017 5-year estimates\n\n\n\nCensus Tract\nPoverty Rate\nMOE\nCV (%)\nReliability\n\n\n\n\n🔴\nCensus Tract 9891\n0.925\n2.204\n144.9\nUnreliable\n\n\n🔴\nCensus Tract 9800\n0.049\n0.070\n85.6\nUnreliable\n\n\n🔴\nCensus Tract 231\n0.008\n0.008\n66.7\nUnreliable\n\n\n🔴\nCensus Tract 256\n0.036\n0.039\n64.7\nUnreliable\n\n\n🔴\nCensus Tract 9801\n0.133\n0.134\n61.5\nUnreliable\n\n\n🔴\nCensus Tract 386\n0.030\n0.030\n59.3\nUnreliable\n\n\n🔴\nCensus Tract 9802\n0.115\n0.097\n51.4\nUnreliable\n\n\n🔴\nCensus Tract 340\n0.097\n0.077\n47.9\nUnreliable\n\n\n🔴\nCensus Tract 347.02\n0.020\n0.015\n47.1\nUnreliable\n\n\n🔴\nCensus Tract 10.02\n0.064\n0.049\n46.7\nUnreliable\n\n\n🔴\nCensus Tract 220\n0.013\n0.010\n45.4\nUnreliable\n\n\n🔴\nCensus Tract 363.03\n0.057\n0.041\n44.2\nUnreliable\n\n\n🔴\nCensus Tract 29\n0.176\n0.125\n43.4\nUnreliable\n\n\n🔴\nCensus Tract 341\n0.098\n0.068\n42.4\nUnreliable\n\n\n🔴\nCensus Tract 365.01\n0.126\n0.087\n42.2\nUnreliable\n\n\n🔴\nCensus Tract 8.01\n0.139\n0.096\n41.9\nUnreliable\n\n\n🔴\nCensus Tract 4.02\n0.043\n0.029\n41.5\nUnreliable\n\n\n🔴\nCensus Tract 236\n0.104\n0.070\n41.1\nUnreliable\n\n\n🔴\nCensus Tract 366\n0.048\n0.032\n40.6\nUnreliable\n\n\n🔴\nCensus Tract 356.02\n0.025\n0.016\n40.3\nUnreliable\n\n\n🔴\nCensus Tract 235\n0.093\n0.061\n40.0\nUnreliable\n\n\n🔴\nCensus Tract 365.02\n0.067\n0.044\n40.0\nUnreliable\n\n\n🟡\nCensus Tract 352\n0.059\n0.039\n40.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 10.01\n0.059\n0.039\n39.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 40.02\n0.072\n0.047\n39.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 12.01\n0.030\n0.020\n39.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 385\n0.070\n0.045\n39.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 344\n0.054\n0.034\n38.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 362.03\n0.052\n0.033\n38.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 361\n0.143\n0.090\n38.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 17\n0.023\n0.015\n38.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 373\n0.025\n0.015\n38.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 18\n0.065\n0.040\n37.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 306\n0.111\n0.067\n36.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 42.01\n0.163\n0.098\n36.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 136.01\n0.021\n0.013\n36.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 142\n0.087\n0.052\n36.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 219\n0.056\n0.033\n36.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 353.01\n0.074\n0.043\n35.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 215\n0.156\n0.089\n34.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 42.02\n0.151\n0.086\n34.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 263.02\n0.110\n0.063\n34.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 212\n0.079\n0.045\n34.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 320\n0.146\n0.082\n34.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 348.02\n0.135\n0.076\n34.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 262\n0.075\n0.042\n34.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 27.02\n0.119\n0.067\n33.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 317\n0.132\n0.073\n33.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 180.01\n0.132\n0.073\n33.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 347.01\n0.099\n0.055\n33.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 209\n0.125\n0.069\n33.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 372\n0.139\n0.076\n33.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 387\n0.082\n0.045\n33.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 367\n0.060\n0.033\n32.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 217\n0.035\n0.019\n32.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 101\n0.243\n0.130\n32.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 22\n0.246\n0.131\n32.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 38\n0.081\n0.043\n32.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 292\n0.186\n0.098\n32.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 8.03\n0.107\n0.057\n32.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 325\n0.294\n0.155\n32.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 315.01\n0.168\n0.088\n31.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 321\n0.293\n0.152\n31.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 339\n0.156\n0.081\n31.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 8.04\n0.082\n0.042\n31.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 342\n0.134\n0.069\n31.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 260\n0.120\n0.061\n31.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 310\n0.202\n0.103\n31.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 379\n0.124\n0.063\n31.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 141\n0.349\n0.178\n31.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 255\n0.078\n0.039\n30.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 323\n0.123\n0.062\n30.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 358\n0.071\n0.036\n30.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 362.01\n0.047\n0.023\n30.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 82\n0.220\n0.110\n30.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 134.02\n0.071\n0.035\n30.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 266\n0.148\n0.074\n30.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 183\n0.056\n0.028\n30.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 363.02\n0.055\n0.027\n30.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 259\n0.108\n0.054\n30.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 211\n0.122\n0.060\n30.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 348.03\n0.050\n0.025\n30.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 98.02\n0.203\n0.100\n29.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 117\n0.359\n0.177\n29.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 143\n0.119\n0.058\n29.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 363.01\n0.108\n0.053\n29.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 54\n0.133\n0.065\n29.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 55\n0.170\n0.082\n29.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 134.01\n0.072\n0.035\n29.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 73\n0.291\n0.141\n29.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 338\n0.131\n0.063\n29.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 261\n0.214\n0.103\n29.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 238\n0.126\n0.060\n29.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 302\n0.192\n0.092\n29.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 388\n0.067\n0.032\n29.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 348.01\n0.091\n0.043\n29.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 23\n0.075\n0.036\n28.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 125\n0.137\n0.064\n28.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 252\n0.308\n0.145\n28.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 346\n0.167\n0.079\n28.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 264\n0.101\n0.047\n28.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 331.01\n0.169\n0.078\n28.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 326\n0.222\n0.102\n28.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 172.01\n0.407\n0.186\n27.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 351\n0.105\n0.048\n27.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 161\n0.264\n0.121\n27.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 216\n0.166\n0.075\n27.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 98.01\n0.196\n0.088\n27.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 332\n0.046\n0.021\n27.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 201.02\n0.289\n0.129\n27.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 28.01\n0.182\n0.081\n27.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 258\n0.053\n0.024\n27.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 16\n0.071\n0.032\n27.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 362.02\n0.093\n0.041\n26.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 336\n0.181\n0.080\n26.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 349\n0.160\n0.071\n26.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 39.02\n0.115\n0.050\n26.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 329\n0.220\n0.097\n26.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 384\n0.045\n0.020\n26.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 263.01\n0.134\n0.059\n26.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 333\n0.140\n0.061\n26.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 86.02\n0.184\n0.080\n26.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 136.02\n0.093\n0.040\n26.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 274.01\n0.215\n0.093\n26.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 79\n0.126\n0.054\n26.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 307\n0.267\n0.115\n26.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 15\n0.139\n0.059\n26.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 378\n0.179\n0.076\n25.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 218\n0.189\n0.081\n25.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 213\n0.099\n0.042\n25.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 114\n0.174\n0.073\n25.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 1\n0.070\n0.029\n25.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 21\n0.237\n0.099\n25.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 179\n0.264\n0.110\n25.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 115\n0.158\n0.066\n25.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 364\n0.424\n0.175\n25.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 135\n0.156\n0.064\n25.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 25\n0.147\n0.060\n24.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 11.02\n0.180\n0.073\n24.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 19\n0.112\n0.046\n24.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 318\n0.246\n0.100\n24.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 60\n0.349\n0.141\n24.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 112\n0.376\n0.151\n24.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 316\n0.263\n0.105\n24.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 337.02\n0.098\n0.039\n24.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 308\n0.153\n0.061\n24.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 157\n0.268\n0.106\n24.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 131\n0.309\n0.122\n23.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 275\n0.258\n0.102\n23.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 207\n0.168\n0.066\n23.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 257\n0.096\n0.038\n23.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 28.02\n0.060\n0.023\n23.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 40.01\n0.209\n0.082\n23.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 309\n0.263\n0.102\n23.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 204\n0.343\n0.132\n23.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 312\n0.317\n0.122\n23.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 158\n0.142\n0.055\n23.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 120\n0.132\n0.051\n23.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 353.02\n0.101\n0.039\n23.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 330\n0.316\n0.121\n23.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 61\n0.250\n0.095\n23.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 237\n0.090\n0.034\n23.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 356.01\n0.085\n0.032\n23.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 84\n0.278\n0.105\n23.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 267\n0.249\n0.094\n23.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 37.02\n0.211\n0.080\n22.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 331.02\n0.142\n0.054\n22.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 268\n0.229\n0.086\n22.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 271\n0.159\n0.059\n22.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 277\n0.297\n0.111\n22.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 93\n0.286\n0.107\n22.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 360\n0.108\n0.040\n22.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 70\n0.243\n0.090\n22.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 334\n0.208\n0.077\n22.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 253\n0.196\n0.073\n22.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 81.01\n0.435\n0.161\n22.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 381\n0.252\n0.093\n22.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 13\n0.076\n0.028\n22.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 20\n0.169\n0.062\n22.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 81.02\n0.347\n0.127\n22.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 133\n0.328\n0.119\n22.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 281\n0.308\n0.112\n22.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 249\n0.395\n0.143\n22.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 113\n0.289\n0.104\n21.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 359\n0.084\n0.030\n21.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 382\n0.320\n0.115\n21.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 210\n0.238\n0.086\n21.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 375\n0.234\n0.084\n21.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 203\n0.462\n0.165\n21.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 2\n0.376\n0.134\n21.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 276\n0.179\n0.063\n21.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 121\n0.302\n0.106\n21.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 27.01\n0.280\n0.098\n21.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 30.01\n0.256\n0.089\n21.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 279.01\n0.295\n0.102\n21.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 65\n0.298\n0.103\n21.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 119\n0.303\n0.105\n21.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 139\n0.417\n0.144\n20.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 171\n0.241\n0.083\n20.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 56\n0.488\n0.167\n20.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 243\n0.321\n0.110\n20.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 190\n0.310\n0.106\n20.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 345.02\n0.162\n0.055\n20.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 289.01\n0.313\n0.106\n20.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 3\n0.084\n0.028\n20.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 71.01\n0.372\n0.125\n20.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 64\n0.305\n0.102\n20.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 357.02\n0.215\n0.072\n20.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 244\n0.348\n0.117\n20.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 86.01\n0.198\n0.066\n20.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 180.02\n0.249\n0.083\n20.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 14\n0.134\n0.045\n20.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 62\n0.382\n0.127\n20.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 389\n0.353\n0.117\n20.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 39.01\n0.216\n0.072\n20.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 118\n0.247\n0.082\n20.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 80\n0.265\n0.088\n20.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 335\n0.268\n0.088\n20.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 355\n0.155\n0.050\n19.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 265\n0.234\n0.076\n19.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 301\n0.358\n0.117\n19.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 7\n0.186\n0.061\n19.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 72\n0.347\n0.113\n19.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 71.02\n0.347\n0.112\n19.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 24\n0.113\n0.036\n19.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 191\n0.326\n0.105\n19.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 380\n0.287\n0.093\n19.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 4.01\n0.185\n0.059\n19.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 102\n0.404\n0.129\n19.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 282\n0.308\n0.098\n19.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 284\n0.388\n0.124\n19.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 149\n0.387\n0.123\n19.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 278\n0.302\n0.096\n19.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 78\n0.241\n0.076\n19.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 11.01\n0.185\n0.058\n19.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 241\n0.437\n0.138\n19.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 103\n0.401\n0.126\n19.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 173\n0.317\n0.100\n19.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 32\n0.362\n0.114\n19.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 200\n0.585\n0.183\n19.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 274.02\n0.276\n0.086\n19.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 248\n0.235\n0.073\n18.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 239\n0.285\n0.088\n18.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 83.02\n0.334\n0.103\n18.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 273\n0.176\n0.054\n18.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 272\n0.157\n0.048\n18.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 83.01\n0.220\n0.068\n18.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 12.02\n0.107\n0.033\n18.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 311.02\n0.126\n0.039\n18.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 33\n0.351\n0.108\n18.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 174\n0.430\n0.131\n18.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 104\n0.457\n0.139\n18.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 337.01\n0.198\n0.060\n18.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 315.02\n0.243\n0.073\n18.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 290\n0.431\n0.130\n18.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 88.01\n0.640\n0.192\n18.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 283\n0.337\n0.101\n18.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 6\n0.139\n0.041\n18.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 145\n0.448\n0.132\n17.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 169.02\n0.459\n0.135\n17.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 269\n0.154\n0.045\n17.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 30.02\n0.182\n0.053\n17.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 146\n0.287\n0.084\n17.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 254\n0.116\n0.034\n17.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 110\n0.482\n0.139\n17.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 122.03\n0.252\n0.072\n17.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 169.01\n0.378\n0.108\n17.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 377\n0.452\n0.129\n17.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 242\n0.341\n0.096\n17.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 206\n0.242\n0.068\n17.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 314.01\n0.257\n0.072\n17.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 137\n0.315\n0.089\n17.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 270\n0.142\n0.040\n17.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 168\n0.468\n0.131\n17.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 148\n0.537\n0.150\n17.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 37.01\n0.311\n0.086\n16.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 311.01\n0.279\n0.077\n16.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 184\n0.132\n0.037\n16.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 305.01\n0.350\n0.097\n16.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 41.02\n0.337\n0.093\n16.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 205\n0.325\n0.089\n16.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 74\n0.337\n0.092\n16.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 111\n0.393\n0.107\n16.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 140\n0.415\n0.113\n16.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 285\n0.389\n0.105\n16.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 87.01\n0.251\n0.068\n16.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 96\n0.352\n0.095\n16.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 85\n0.361\n0.097\n16.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 41.01\n0.404\n0.108\n16.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 100\n0.297\n0.079\n16.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 279.02\n0.376\n0.100\n16.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 106\n0.447\n0.118\n16.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 9.02\n0.200\n0.053\n16.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 160\n0.103\n0.027\n16.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 122.04\n0.196\n0.052\n16.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 313\n0.314\n0.083\n16.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 95\n0.381\n0.100\n16.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 31\n0.218\n0.057\n15.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 9.01\n0.243\n0.063\n15.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 280\n0.374\n0.097\n15.8\nSomewhat reliable\n\n\n🟡\nCensus Tract 188\n0.481\n0.124\n15.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 36\n0.451\n0.117\n15.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 132\n0.338\n0.087\n15.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 69\n0.628\n0.162\n15.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 300\n0.359\n0.092\n15.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 319\n0.195\n0.050\n15.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 214\n0.203\n0.052\n15.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 376\n0.373\n0.095\n15.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 147\n0.621\n0.158\n15.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 240\n0.262\n0.067\n15.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 197\n0.444\n0.112\n15.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 305.02\n0.315\n0.079\n15.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 170\n0.349\n0.087\n15.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 195.01\n0.530\n0.131\n15.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 357.01\n0.250\n0.062\n15.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 152\n0.577\n0.142\n15.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 345.01\n0.222\n0.055\n14.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 105\n0.449\n0.110\n14.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 151.01\n0.507\n0.122\n14.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 165\n0.581\n0.139\n14.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 286\n0.342\n0.082\n14.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 390\n0.369\n0.088\n14.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 293\n0.570\n0.134\n14.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 246\n0.410\n0.096\n14.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 298\n0.335\n0.078\n14.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 199\n0.621\n0.144\n14.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 208\n0.270\n0.063\n14.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 288\n0.438\n0.101\n14.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 108\n0.431\n0.099\n14.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 138\n0.331\n0.076\n14.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 67\n0.320\n0.072\n13.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 107\n0.411\n0.092\n13.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 202\n0.460\n0.103\n13.6\nSomewhat reliable\n\n\n🟡\nCensus Tract 144\n0.321\n0.071\n13.5\nSomewhat reliable\n\n\n🟡\nCensus Tract 87.02\n0.334\n0.074\n13.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 63\n0.443\n0.098\n13.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 192\n0.521\n0.115\n13.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 166\n0.518\n0.113\n13.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 77\n0.455\n0.099\n13.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 291\n0.467\n0.101\n13.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 92\n0.435\n0.094\n13.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 66\n0.415\n0.090\n13.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 247\n0.336\n0.072\n13.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 294\n0.552\n0.119\n13.1\nSomewhat reliable\n\n\n🟡\nCensus Tract 177.01\n0.559\n0.119\n13.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 151.02\n0.496\n0.106\n13.0\nSomewhat reliable\n\n\n🟡\nCensus Tract 167.01\n0.483\n0.103\n12.9\nSomewhat reliable\n\n\n🟡\nCensus Tract 156\n0.431\n0.090\n12.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 383\n0.579\n0.121\n12.7\nSomewhat reliable\n\n\n🟡\nCensus Tract 198\n0.502\n0.103\n12.4\nSomewhat reliable\n\n\n🟡\nCensus Tract 172.02\n0.446\n0.090\n12.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 314.02\n0.283\n0.057\n12.3\nSomewhat reliable\n\n\n🟡\nCensus Tract 88.02\n0.642\n0.129\n12.2\nSomewhat reliable\n\n\n🟡\nCensus Tract 195.02\n0.509\n0.101\n12.1\nSomewhat reliable\n\n\n🟢\nCensus Tract 91\n0.508\n0.100\n11.9\nReliable\n\n\n🟢\nCensus Tract 122.01\n0.320\n0.063\n11.9\nReliable\n\n\n🟢\nCensus Tract 162\n0.476\n0.093\n11.9\nReliable\n\n\n🟢\nCensus Tract 369\n0.451\n0.088\n11.8\nReliable\n\n\n🟢\nCensus Tract 178\n0.565\n0.108\n11.7\nReliable\n\n\n🟢\nCensus Tract 287\n0.417\n0.080\n11.6\nReliable\n\n\n🟢\nCensus Tract 176.02\n0.616\n0.116\n11.5\nReliable\n\n\n🟢\nCensus Tract 299\n0.496\n0.092\n11.3\nReliable\n\n\n🟢\nCensus Tract 176.01\n0.634\n0.118\n11.3\nReliable\n\n\n🟢\nCensus Tract 5\n0.348\n0.064\n11.1\nReliable\n\n\n🟢\nCensus Tract 94\n0.438\n0.078\n10.8\nReliable\n\n\n🟢\nCensus Tract 163\n0.549\n0.097\n10.8\nReliable\n\n\n🟢\nCensus Tract 201.01\n0.468\n0.083\n10.8\nReliable\n\n\n🟢\nCensus Tract 164\n0.499\n0.087\n10.6\nReliable\n\n\n🟢\nCensus Tract 289.02\n0.390\n0.068\n10.6\nReliable\n\n\n🟢\nCensus Tract 245\n0.590\n0.101\n10.4\nReliable\n\n\n🟢\nCensus Tract 167.02\n0.363\n0.058\n9.7\nReliable\n\n\n🟢\nCensus Tract 175\n0.596\n0.092\n9.4\nReliable\n\n\n🟢\nCensus Tract 109\n0.555\n0.083\n9.1\nReliable\n\n\n🟢\nCensus Tract 177.02\n0.595\n0.075\n7.6\nReliable\n\n\n🟢\nCensus Tract 90\n0.610\n0.075\n7.5\nReliable\n\n\n🟢\nCensus Tract 153\n0.680\n0.065\n5.8\nReliable\n\n\n\nThresholds follow Jurjevich et al. (2018): CV &lt; 12% Reliable, 12–40% Somewhat reliable, &gt; 40% Unreliable.\n\n\n\n\n\n\nTable 1: Tract reliability classification for 2013–2017 poverty rate\n\n\n\n\nError Bar Plot\n\n\nShow code\nphl_tract_calc %&gt;%\n  arrange(desc(abs(povrate_change))) %&gt;%\n  slice_head(n = 20) %&gt;%\n  mutate(NAME = str_remove(NAME, \", Philadelphia County, Pennsylvania\")) %&gt;%\n  ggplot(aes(x = reorder(NAME, povrate_change), y = povrate_change)) +\n  geom_col(fill = \"steelblue\") +\n  geom_errorbar(aes(ymin = povrate_change - moe_change,\n                    ymax = povrate_change + moe_change), width = 0.3) +\n  geom_hline(yintercept = 0, linetype = \"dashed\", color = \"red\") +\n  coord_flip() +\n  theme_minimal() +\n  labs(\n    title = \"Change in Tract Poverty Rate\",\n    subtitle = \"2006-2010 vs 2013-2017 ACS 5-year estimates\",\n    x = NULL,\n    y = \"Change in Poverty Rate\"\n  )\n\n\n\n\n\nFigure 1: Change in poverty rate (2006–10 to 2013–17) with 90% confidence margin of error\n\n\n\n\n\n\nSupplementary Visualization\nThis scatter plot compares poverty rates for each census tract across the two time periods. Points above the diagonal line represent tracts where poverty rates went up over time.\n\n\nShow code\nggplot(phl_tract_calc, aes(x = povrate_0610, y = povrate_1317)) +\n  geom_abline(slope = 1, intercept = 0, color = \"red\", linetype = \"dashed\") +\n  geom_point(alpha = 0.6) +\n  theme_minimal() +\n  labs(\n    title = \"Poverty Rate: 2006-10 vs 2013-2017\",\n    x = \"Poverty Rate 2006–2010\",\n    y = \"Poverty Rate 2013–2017\"\n  )\n\n\n\n\n\nFigure 2: Poverty rate comparison between two periods"
+  },
+  {
+    "objectID": "assignments/assignment3.html#part-3-adjudicate",
+    "href": "assignments/assignment3.html#part-3-adjudicate",
+    "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
+    "section": "Part 3: Adjudicate",
+    "text": "Part 3: Adjudicate\nThe WHYY article argues that poverty grew across many Philadelphia neighborhoods, and that large numbers of white residents are living below the poverty line. I sort these claims into three buckets based on my tract-level analysis.\nSupported: Many census tracts show statistically significant increases in poverty rate between 2006–2010 and 2013–2017. The broad direction of the article — rising poverty in parts of Philadelphia — is consistent with the data. The existence of white residents in poverty across the city is also a real population pattern.\nNot supported: The article presents neighborhood-level poverty numbers without reporting any margins of error. Some of the apparent increases it highlights are within the ACS sampling error and cannot be distinguished from random noise. Treating these estimates as precise facts overstates what the data actually tells us.\nCannot be determined: The reporter aggregated tracts into custom neighborhood boundaries and never published which tracts belong to which neighborhood. I cannot replicate the exact neighborhood-level figures from the story, so I cannot verify whether the specific neighborhoods named in the article moved in the direction claimed.\nOverall, the headline trend is broadly consistent with the data, but the article ignores statistical uncertainty and presents small-area estimates as if they were exact counts."
+  },
+  {
+    "objectID": "assignments/assignment3.html#part-4-rewrite",
+    "href": "assignments/assignment3.html#part-4-rewrite",
+    "title": "Verify the Claim: Poverty Rate Change in Philadelphia Census Tracts",
+    "section": "Part 4: Rewrite",
+    "text": "Part 4: Rewrite\nNew census estimates show rising poverty across many Philadelphia neighborhoods, with a notable share of white residents living below the poverty line. But not every neighborhood’s poverty shift is statistically meaningful. ACS estimates carry sampling error, and small-area numbers can be noisy. While many tracts show real, measurable increases, some apparent changes may only reflect random survey variation. These findings confirm inequality persists across Philadelphia, but neighborhood poverty figures should be read with caution."
   }
 ]
