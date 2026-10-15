@@ -1,17 +1,19 @@
 [
   {
-    "listing": "/assignments/index.html",
-    "items": [
-      "/assignments/assignment2/assignment2.html",
-      "/assignments/assignment3.html"
-    ]
-  },
-  {
     "listing": "/weekly-notes/index.html",
     "items": [
+      "/weekly-notes/week-02 - 副本.html",
       "/weekly-notes/week-02.html",
       "/weekly-notes/week-03.html",
       "/weekly-notes/week-01.html"
+    ]
+  },
+  {
+    "listing": "/assignments/index.html",
+    "items": [
+      "/assignments/assignment_feature_engineering.html",
+      "/assignments/assignment2/assignment2.html",
+      "/assignments/assignment3.html"
     ]
   }
 ]
