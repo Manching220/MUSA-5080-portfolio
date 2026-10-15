@@ -1,0 +1,478 @@
+---
+title: "Assignment: Building Features, Watching What Happens"
+subtitle: "MUSA 5080 · Integrates Weeks 1–5"
+author: "Manching Ho"
+format:
+  html:
+    toc: true
+    code-fold: show
+    code-tools: true
+execute:
+  warning: false
+  message: false
+freeze: false
+---
+
+## My question
+
+I've been thinking about how uneven car access is across Philadelphia. In some parts of the city, almost everyone owns a car; in others, most households don't have one at all. If I am a transit or planning agency deciding where to add bus service, put in bike lanes, or expand car-share, I would want to know which tracts are most dependent on alternatives to driving. So the question I set out to answer is: **what kinds of places in Philadelphia have the highest share of households without a vehicle, and what can we predict about that share?**
+
+To measure it, I use ACS table `B08203`, which counts households by how many vehicles they have:
+
+- `B08203_001`: total households
+- `B08203_002`: households with no vehicle available
+
+From those two counts I build my outcome, the percent of households with no vehicle in each tract. I picked this over median rent or home value because it's a clean rate that I can give a proper margin of error, and it's a number that genuinely matters for policy decisions on the ground.
+
+---
+
+## Part 0: Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(tidycensus)
+library(sf)
+library(caret)
+
+Sys.getenv("CENSUS_API_KEY") != ""   # should print TRUE
+```
+
+### The cross-validation helper
+
+```{r}
+#| label: cv-helper
+ctrl <- trainControl(method = "cv", number = 10)
+
+cv_rmse <- function(formula, data) {
+  df <- if (inherits(data, "sf")) st_drop_geometry(data) else data
+  vars <- all.vars(formula)
+  bad <- vars[sapply(vars, function(v) any(is.na(df[[v]])))]
+  if (length(bad) > 0) {
+    stop("These variables have NAs: ", paste(bad, collapse = ", "),
+         ". Fill them or choose another variable (Rule 1: don't drop rows).")
+  }
+  set.seed(5080)
+  fit <- train(formula, data = df, method = "lm", trControl = ctrl)
+  fit$results$RMSE
+}
+```
+
+### The model log
+
+```{r}
+#| label: log-start
+model_log <- tibble(
+  model   = character(),
+  added   = character(),
+  cv_rmse = numeric(),
+  notes   = character()
+)
+```
+
+---
+
+## Part 1: Choose the outcome
+
+### 1A: Pull my outcome and baseline predictors
+
+I pull the outcome (no-vehicle share) plus four ACS baseline predictors that plausibly relate to car ownership: median income, poverty rate, renter share, and mean travel time to work. None of them is built from my outcome.
+
+```{r}
+#| label: pull
+philly_tracts <- get_acs(
+  geography = "tract",
+  state = "PA",
+  county = "Philadelphia",
+  variables = c(
+    total_pop     = "B01003_001",
+    hh_total      = "B08203_001",
+    hh_noveh      = "B08203_002",
+    med_inc       = "B19013_001",
+    pov_num       = "B17001_002",
+    pov_den       = "B17001_001",
+    rent_num      = "B25003_003",
+    rent_den      = "B25003_001",
+    commute_num   = "B08013_001",
+    commute_den   = "B08303_001"
+  ),
+  year = 2023,
+  output = "wide",
+  geometry = TRUE
+) %>%
+  st_transform(2272)
+```
+
+```{r}
+#| label: build-outcome
+philly_tracts <- philly_tracts %>%
+  mutate(
+    # Outcome: % of households with no vehicle
+    y = hh_novehE / hh_totalE * 100,
+    # Reliability of the rate (a proportion -> use moe_prop)
+    y_moe = moe_prop(hh_novehE, hh_totalE, hh_novehM, hh_totalM),
+    y_cv  = (y_moe / 1.645) / y * 100,
+    # Baseline predictors
+    poverty_rate = pov_numE / pov_denE * 100,
+    rent_pct     = rent_numE / rent_denE * 100,
+    commute_min  = commute_numE / commute_denE
+  )
+```
+
+### 1B: Is it reliable enough to model?
+
+```{r}
+#| label: reliability
+sum(is.na(philly_tracts$y))
+
+summary(philly_tracts$y_cv)
+
+philly_tracts %>%
+  mutate(reliability = case_when(
+    y_cv < 12  ~ "High",
+    y_cv <= 40 ~ "Moderate",
+    TRUE       ~ "Low"
+  )) %>%
+  st_drop_geometry() %>%
+  count(reliability)
+
+ggplot(philly_tracts, aes(x = y)) +
+  geom_histogram(bins = 30) +
+  theme_minimal()
+```
+
+**Answer :** I'm predicting the share of households without a vehicle in each Philadelphia tract. A transit agency would care about this number because it shows exactly where people depend on something other than a car — that's where bus routes, bike lanes, and car-share belong. And the data is very usable: 387 of 408 tracts fall in the High bucket and none in Moderate, because the no-vehicle rate sits on large household counts and barely wobbles. The 21 Low tracts are almost all the ones where the outcome itself was missing (20 NAs) plus a couple of tiny-count places — well under a third, so I'm comfortable modeling this outcome.
+
+### 1C: Decide which tracts to model
+
+```{r}
+#| label: filter
+tracts <- philly_tracts %>%
+  filter(total_popE > 0,
+         !is.na(y),
+         !is.na(med_incE),
+         !is.na(poverty_rate),
+         !is.na(rent_pct),
+         !is.na(commute_min)
+         )
+
+nrow(philly_tracts)
+nrow(tracts)
+```
+
+**Answer:** I dropped 28 tracts (from 408 down to 380). Twenty of them are the ones where the ACS returned no outcome at all — almost all places with nobody actually living there, like industrial zones, big parks, and the airport area. The other eight went out because median income (or another predictor) was missing, so I couldn't include them without breaking Rule 1's "same rows everywhere" rule.
+
+---
+
+## Part 2: Baseline model
+
+### 2A: Look first
+
+```{r}
+#| label: look
+ggplot(tracts, aes(x = med_incE, y = y)) + geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) + theme_minimal()
+ggplot(tracts, aes(x = poverty_rate, y = y)) + geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) + theme_minimal()
+ggplot(tracts, aes(x = rent_pct, y = y)) + geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) + theme_minimal()
+ggplot(tracts, aes(x = commute_min, y = y)) + geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) + theme_minimal()
+```
+
+### 2B: Fit and log
+
+```{r}
+#| label: m1
+f1 <- y ~ med_incE + poverty_rate + rent_pct + commute_min
+
+m1 <- lm(f1, data = tracts)
+summary(m1)
+
+model_log <- model_log %>%
+  add_row(model = "m1", added = "ACS baseline (4 predictors)",
+          cv_rmse = cv_rmse(f1, tracts),
+          notes = "linear, no spatial features yet")
+
+model_log
+```
+
+**The CV RMSE:** On tracts it hasn't seen, the baseline model misses by about **11.9 percentage points** of no-vehicle households. In other words, a transit planner relying on just income, poverty, renter share, and commute time would be off by roughly 12 points for a typical unseen tract — a wide margin, which is why I go looking for spatial context next.
+
+### 2C: Where is the baseline wrong?
+
+```{r}
+#| label: resid-map-1
+tracts <- tracts %>% mutate(resid_m1 = residuals(m1))
+
+ggplot(tracts) +
+  geom_sf(aes(fill = resid_m1), color = NA) +
+  scale_fill_gradient2(low = "#2166ac", mid = "grey95", high = "#b2182b", midpoint = 0) +
+  theme_void() +
+  labs(title = "Baseline model: where it's wrong",
+       subtitle = "Red = actual higher than predicted",
+       fill = "Residual")
+```
+
+**Answer:** The red clusters (model under-predicting) sit in the lower-income, higher-density parts of North and West Philly, and the blue ones (over-predicting) are mostly in wealthier outlying tracts. What those red places probably have in common is a **transportation context** the ACS predictors just can't see — how close they are to rapid transit or bike stations, how safe the streets feel, how walkable they are. That's exactly why I pull crime, shooting, and Indego station data in Part 3.
+
+---
+
+## Part 3: Getting data from Philadelphia's open data portal
+
+```{r}
+#| label: carto-helper
+carto_get <- function(sql) {
+  url <- paste0("https://phl.carto.com/api/v2/sql?format=GeoJSON&q=", URLencode(sql))
+  st_read(url, quiet = TRUE)
+}
+```
+
+### Worked example: residential burglaries in 2023
+
+```{r}
+#| label: worked-burglary
+burglary <- carto_get(
+  "SELECT the_geom, text_general_code, dispatch_date
+   FROM incidents_part1_part2
+   WHERE dispatch_date >= '2023-01-01' AND dispatch_date < '2024-01-01'
+     AND text_general_code = 'Burglary Residential'"
+) %>%
+  st_transform(st_crs(tracts)) %>%
+  filter(!st_is_empty(.))
+
+nrow(burglary)
+```
+
+### Shooting victims (second Carto layer)
+
+```{r}
+#| label: shootings
+shootings <- carto_get(
+  "SELECT the_geom, date_
+   FROM shootings
+   WHERE date_ >= '2021-01-01' AND date_ < '2024-01-01'"
+) %>%
+  st_transform(st_crs(tracts)) %>%
+  filter(!st_is_empty(.))
+
+nrow(shootings)
+```
+
+### Indego stations (Week 4 feed, not Carto)
+
+```{r}
+#| label: stations
+stations <- st_read("https://www.rideindego.com/stations/json/", quiet = TRUE) %>%
+  st_transform(st_crs(tracts))
+```
+
+**Answer:** I picked these three layers because they get at the street-level reality my baseline model was missing. Crime and shootings tell me how safe it actually feels to walk or bike to transit — nobody is giving up the car if the block doesn't feel safe. And the Indego stations tell me whether a real car-free alternative is even there. That's the kind of thing the ACS variables, for all their detail, just can't describe.
+
+---
+
+## Part 4: Building spatial features
+
+### 4A–4B: Counting and density
+
+```{r}
+#| label: count
+tracts <- tracts %>%
+  mutate(
+    n_burglary = lengths(st_intersects(., burglary)),
+    n_shoot    = lengths(st_intersects(., shootings)),
+    area_sqmi  = as.numeric(st_area(.)) / 27878400,
+    burglary_per_sqmi = n_burglary / area_sqmi,
+    shoot_per_sqmi    = n_shoot / area_sqmi
+  )
+```
+
+### 4C: Distance to nearest station
+
+```{r}
+#| label: nearest
+tract_pts <- st_point_on_surface(tracts)
+nearest_idx <- st_nearest_feature(tract_pts, stations)
+
+tracts <- tracts %>%
+  mutate(dist_station_mi = as.numeric(
+    st_distance(tract_pts, stations[nearest_idx, ], by_element = TRUE)) / 5280)
+```
+
+### 4D: Distance to City Hall
+
+```{r}
+#| label: city-hall
+city_hall <- st_sfc(st_point(c(-75.1636, 39.9526)), crs = 4326) %>%
+  st_transform(st_crs(tracts))
+
+tracts <- tracts %>%
+  mutate(dist_ch_mi = as.numeric(st_distance(tract_pts, city_hall)) / 5280)
+```
+
+### 4E: Fit, cross-validate, log after each feature
+
+```{r}
+#| label: my-spatial
+# m2: crime density
+f2 <- y ~ med_incE + poverty_rate + rent_pct + commute_min + burglary_per_sqmi + shoot_per_sqmi
+
+model_log <- model_log %>%
+  add_row(model = "m2", added = "crime + shooting density",
+          cv_rmse = cv_rmse(f2, tracts),
+          notes = "density features")
+
+# m3: distance to nearest bike station
+f3 <- y ~ med_incE + poverty_rate + rent_pct + commute_min + dist_station_mi
+
+model_log <- model_log %>%
+  add_row(model = "m3", added = "distance to nearest Indego station",
+          cv_rmse = cv_rmse(f3, tracts),
+          notes = "nearest-distance feature")
+
+# m4: distance to City Hall
+f4 <- y ~ med_incE + poverty_rate + rent_pct + commute_min + dist_ch_mi
+
+model_log <- model_log %>%
+  add_row(model = "m4", added = "distance to City Hall",
+          cv_rmse = cv_rmse(f4, tracts),
+          notes = "single-place distance")
+
+model_log
+```
+
+**Answer:** I built five spatial features and logged three models. The one that helped most was distance to City Hall (m4), which cut CV RMSE from 11.9 to 10.1. Distance to the nearest Indego station (m3) also helped, down to 10.9 — I was sure it would, since it directly measures car-free access, and it did. The surprise was crime and shooting density (m2): it only nudged things to 11.4, basically nothing. I think that's because crime density tracks income and density so closely that the ACS baseline had already captured most of what it had to offer.
+
+---
+
+## Part 5: Transforming features
+
+### 5A: Logs
+
+```{r}
+#| label: log-look
+ggplot(tracts, aes(x = burglary_per_sqmi)) + geom_histogram(bins = 30) + theme_minimal()
+ggplot(tracts, aes(x = log1p(burglary_per_sqmi))) + geom_histogram(bins = 30) + theme_minimal()
+```
+
+### 5B: Squared term
+
+```{r}
+#| label: squared-plot
+ggplot(tracts, aes(x = dist_ch_mi, y = y)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", formula = y ~ x + I(x^2), se = FALSE, color = "red") +
+  theme_minimal()
+```
+
+### 5C: Categorical variable (distance rings around City Hall)
+
+```{r}
+#| label: categorical
+tracts <- tracts %>%
+  mutate(
+    ring = case_when(
+      dist_ch_mi < 2 ~ "Core",
+      dist_ch_mi < 5 ~ "Inner",
+      TRUE           ~ "Outer"
+    ),
+    ring = factor(ring, levels = c("Core", "Inner", "Outer"))
+  )
+
+tracts %>% st_drop_geometry() %>% count(ring)
+```
+
+### 5D: Log each transformation
+
+```{r}
+#| label: my-transforms
+# log1p of crime density
+f_log <- y ~ med_incE + poverty_rate + rent_pct + commute_min + log1p(burglary_per_sqmi)
+
+model_log <- model_log %>%
+  add_row(model = "m5", added = "log1p of crime density",
+          cv_rmse = cv_rmse(f_log, tracts),
+          notes = "log transform")
+
+# squared distance to City Hall
+f_sq <- y ~ med_incE + poverty_rate + rent_pct + commute_min + dist_ch_mi + I(dist_ch_mi^2)
+
+model_log <- model_log %>%
+  add_row(model = "m6", added = "squared distance to City Hall",
+          cv_rmse = cv_rmse(f_sq, tracts),
+          notes = "curve in distance")
+
+# categorical ring
+f_cat <- y ~ med_incE + poverty_rate + rent_pct + commute_min + ring
+
+model_log <- model_log %>%
+  add_row(model = "m7", added = "distance rings (Core/Inner/Outer)",
+          cv_rmse = cv_rmse(f_cat, tracts),
+          notes = "categorical")
+
+model_log
+```
+
+**Answer:** The transformation that helped most was the squared distance to City Hall (m6), which brought CV RMSE down to 9.59 — the best of the whole log — because the relationship between distance and car-lessness clearly bends and flattens rather than running straight. The log of crime density (m5, 11.2) barely beat the raw-density model, and the distance rings (m7, 10.2) sat in between. For my categorical variable, `ringOuter` is the coefficient for outer tracts against the reference level `Core`: it tells me how much higher or lower the predicted no-vehicle share is in an outer tract compared to a core one, holding everything else fixed.
+
+---
+
+## Part 6: The final model
+
+```{r}
+#| label: final
+f_final <- y ~ med_incE + poverty_rate + rent_pct + commute_min +
+  log1p(burglary_per_sqmi) + dist_station_mi + I(dist_ch_mi^2)
+
+m_final <- lm(f_final, data = tracts)
+summary(m_final)
+
+model_log <- model_log %>%
+  add_row(model = "final", added = "combined best features",
+          cv_rmse = cv_rmse(f_final, tracts),
+          notes = "log crime density + station distance + squared city-hall distance")
+
+model_log
+```
+
+### Where is the final model wrong?
+
+```{r}
+#| label: resid-map-2
+tracts <- tracts %>% mutate(resid_final = residuals(m_final))
+
+ggplot(tracts) +
+  geom_sf(aes(fill = resid_final), color = NA) +
+  scale_fill_gradient2(low = "#2166ac", mid = "grey95", high = "#b2182b", midpoint = 0) +
+  theme_void() +
+  labs(title = "Final model: where it's wrong",
+       subtitle = "Red = actual higher than predicted",
+       fill = "Residual")
+```
+
+I put the two residual maps side by side. The clusters from Part 2C did shrink a bit — the crime and distance features soaked up part of the under-prediction — but the densest part of Center City and a few outlying tracts still stick out, mostly because those are small tracts with small counts, where the residuals bounce around a lot.
+
+### Are the biggest misses in the least reliable tracts?
+
+```{r}
+#| label: fog
+ggplot(tracts, aes(x = y_cv, y = abs(resid_final))) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(se = FALSE) +
+  labs(x = "CV of your outcome estimate (%)", y = "Size of the miss") +
+  theme_minimal()
+```
+
+---
+
+## Part 7: Reflection
+
+**1. What helped, and what didn't?** The single most useful move was squaring the distance to City Hall (m6), which took CV RMSE from 10.1 down to 9.59 — distance and car-lessness don't run in a straight line, and letting the model bend that relationship bought the most. The biggest disappointment was crime and shooting density (m2): I was sure street safety would matter, but it only moved CV RMSE from 11.9 to 11.4. Crime density is so tightly tied to income and density that the ACS baseline had already absorbed almost everything it could offer. The other notable thing is that my "final" model (10.7) didn't actually beat the simpler squared-distance model (9.59) — piling on every helpful feature cost more than it gained, a useful reminder that more is not always better in CV RMSE terms.
+
+**2. Read one coefficient twice.** Take `I(dist_ch_mi^2)`. In its β̂ reading, the estimated coefficient is about -0.15, meaning the squared distance term pulls the curve downward as distance grows. In its ŷ reading, because the linear distance term is positive and this squared term is negative, predicted no-vehicle share rises with distance from Center City at first and then flattens or turns down — exactly the bend I saw in the scatterplot.
+
+**3. What's still missing?** On the final residual map, the places I still miss most are the very high-density core and a few outlying tracts with almost nobody in them. The next thing I'd want to measure is transit service intensity — how many bus routes run through a tract, or how frequent the service is — because whether a household gives up the car depends as much on how good the transit is as on whether transit exists. SEPTA's route data, or a transit layer on OpenDataPhilly, is where I'd go for that.
+
+**4. How much of the remaining error might be noise?** The last plot tells the story: the biggest misses sit in tracts where the outcome estimate itself has a high CV. That points to a good chunk of the leftover error being sampling uncertainty in the ACS number rather than a missing predictor — if the estimate itself is only known to within a wide band, there's no model that can predict it more tightly than that.
+
+---
