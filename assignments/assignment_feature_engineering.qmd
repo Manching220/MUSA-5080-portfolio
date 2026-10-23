@@ -137,9 +137,9 @@ philly_tracts %>%
   st_drop_geometry() %>%
   count(reliability)
 
-ggplot(philly_tracts, aes(x = y)) +
-  geom_histogram(bins = 30) +
-  theme_minimal()
+# ggplot(philly_tracts, aes(x = y)) +
+#   geom_histogram(bins = 30) +
+#   theme_minimal()
 ```
 
 **Answer :** I'm predicting the share of households without a vehicle in each Philadelphia tract. A transit agency would care about this number because it shows exactly where people depend on something other than a car — that's where bus routes, bike lanes, and car-share belong. And the data is very usable: 387 of 408 tracts fall in the High bucket and none in Moderate, because the no-vehicle rate sits on large household counts and barely wobbles. The 21 Low tracts are almost all the ones where the outcome itself was missing (20 NAs) plus a couple of tiny-count places — well under a third, so I'm comfortable modeling this outcome.
