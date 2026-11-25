@@ -1,0 +1,419 @@
+---
+title: "Assignment 6: Parole Reform"
+subtitle: "MUSA 5080 · Fall 2026"
+author: "Manching Ho"
+date: today
+format:
+  html:
+    code-fold: show
+    toc: true
+    toc-depth: 2
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+freeze: false
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(pROC)
+```
+
+# The scenario
+
+The Georgia Department of Community Supervision is considering a risk model to guide parole decisions. Every person released to parole would get a predicted probability of being **rearrested within three years**. The department has two proposed uses:
+
+- **Use A:** people above a threshold get **more restrictive supervision** (more check-ins, electronic monitoring, faster revocation).
+- **Use B:** people above a threshold get **priority for reentry services** (housing assistance, job placement, a case manager).
+
+The department has promised that the model **will not use race**. I've been hired to build it and to tell them whether that promise means what they think it means.
+
+# Part 1: Load and clean
+
+```{r}
+#| label: load
+nij <- read_csv("data/nij_recidivism.csv") %>%
+  mutate(
+    recid              = as.integer(Recidivism_Within_3years == "Yes"),
+    male               = as.integer(Gender == "M"),
+    age_group          = factor(Age_at_Release),
+    prison_years       = factor(Prison_Years,
+                                levels = c("Less than 1 year", "1-2 years",
+                                           "Greater than 2 to 3 years",
+                                           "More than 3 years")),
+    prior_fel_arrests  = parse_number(Prior_Arrest_Episodes_Felony),
+    prior_misd_arrests = parse_number(Prior_Arrest_Episodes_Misd),
+    puma               = factor(Residence_PUMA),
+    offense            = replace_na(Prison_Offense, "Missing"),
+    sup_level          = replace_na(Supervision_Level_First, "Missing")
+  )
+
+train <- nij %>% filter(Training_Sample == 1)
+test  <- nij %>% filter(Training_Sample == 0)
+```
+
+A note on one line of the starter code: `Recidivism_Within_3years` is stored as the text `"Yes"`/`"No"`, so `as.integer()` on it returns `NA` for every row. Converting with `== "Yes"` first gets a clean 0/1.
+
+**1.1** How many people are in `train` and in `test`? What share of each was rearrested within three years?
+
+```{r}
+#| label: q11
+tibble(
+  set        = c("train", "test"),
+  n          = c(nrow(train), nrow(test)),
+  rearrested = c(sum(train$recid), sum(test$recid)),
+  share      = round(c(mean(train$recid), mean(test$recid)), 3)
+)
+```
+
+*Your answer:* `train` has 18,028 people and 10,421 of them were rearrested within three years, or **57.8%**. `test` has 7,807 people, 4,483 rearrested, or **57.4%**. The two splits are almost identical in base rate, which is what a random 70/30 split should give.
+
+**1.2** Look at `Gang_Affiliated`. How many values are missing, and who are they?
+
+```{r}
+#| label: q12
+sum(is.na(nij$Gang_Affiliated))
+table(nij$Gender, is.na(nij$Gang_Affiliated), useNA = "always")
+```
+
+*Your answer:* 3,167 values are missing, and they are **exactly the women**: all 3,167 female parolees have a blank, and not one male does. So the blankness isn't random noise — gang information is only recorded for men in this data.
+
+If I added `Gang_Affiliated` raw, `glm()` would silently drop all 3,167 women from the training set, so the model would be fitted only on men and I would never notice. Then `predict()` would return `NA` for every woman in `test`, which turns every `mean()` in Parts 4–6 into `NA`. The fix is to keep the blanks as their own category, `replace_na(Gang_Affiliated, "Missing")`, so nobody is dropped and the missingness becomes a visible level.
+
+# Part 2: What would you know at the moment of decision?
+
+The parole decision happens **at release**. Some columns were recorded **during** the three years of supervision that followed.
+
+**2.1** Sort every predictor column into one of two lists.
+
+| Known at release | Recorded during supervision (leakage) |
+|---|---|
+| Gender | Violations_ElectronicMonitoring |
+| Race | Violations_Instruction |
+| Age_at_Release | Violations_FailToReport |
+| Residence_PUMA | Violations_MoveWithoutPermission |
+| Gang_Affiliated | Delinquency_Reports |
+| Supervision_Risk_Score_First | Program_Attendances |
+| Supervision_Level_First | Program_Unexcused_Absences |
+| Education_Level | Residence_Changes |
+| Dependents | Avg_Days_per_DrugTest |
+| Prison_Offense | DrugTests_THC_Positive |
+| Prison_Years | DrugTests_Cocaine_Positive |
+| Prior_Arrest_Episodes_* (all 8) | DrugTests_Meth_Positive |
+| Prior_Conviction_Episodes_* (all 8) | DrugTests_Other_Positive |
+| Prior_Revocations_Parole / Probation | Percent_Days_Employed |
+| Condition_MH_SA / Cog_Ed / Other | Jobs_Per_Year |
+| Employment_Exempt | (plus the four Recidivism_* outcome columns, which are the label) |
+
+**2.2** Pick one variable from the right-hand column and explain why including it would make the model look better than it really is.
+
+*Your answer:* `Percent_Days_Employed` is measured across the whole parole episode — the same three years in which the arrest either happens or doesn't. A person who is rearrested in month four stops working, so their low employment is partly a *result* of the very event the model is supposed to predict. Feeding it in lets the model read the shadow of the outcome, so its accuracy would look strong while the model would be useless at the only moment that matters: release, when nobody knows yet whether this person will hold a job.
+
+# Part 3: Build a race-blind model
+
+```{r}
+#| label: base-model
+base_fit <- glm(recid ~ male + age_group + prison_years +
+                  prior_fel_arrests + prior_misd_arrests,
+                family = binomial,
+                data = train)
+summary(base_fit)
+```
+
+**3.1** Exponentiate the coefficients. Interpret the odds ratio for `prior_fel_arrests` in one sentence, using the word *odds* correctly.
+
+```{r}
+#| label: q31
+round(exp(coef(base_fit)), 3)
+```
+
+*Your answer:* The odds ratio for `prior_fel_arrests` is **1.18**. Each additional prior felony arrest multiplies the **odds** of being rearrested within three years by about 1.18, holding the other variables fixed — an 18% increase in odds, which is not the same thing as an 18% increase in probability.
+
+**3.2** Constant on the odds, not on the probability.
+
+```{r}
+#| label: q32
+people <- tibble(
+  male               = c(1, 1),
+  age_group          = factor(c("23-27", "48 or older"), levels = levels(nij$age_group)),
+  prison_years       = factor(c("1-2 years", "1-2 years"), levels = levels(nij$prison_years)),
+  prior_fel_arrests  = c(2, 2),
+  prior_misd_arrests = c(1, 1)
+)
+
+p_two <- predict(base_fit, newdata = people, type = "response")
+p_three <- predict(base_fit, newdata = people %>% mutate(prior_fel_arrests = 3),
+                   type = "response")
+
+tibble(
+  age            = people$age_group,
+  p_at_2_arrests = round(p_two, 3),
+  p_at_3_arrests = round(p_three, 3),
+  change_pp      = round(100 * (p_three - p_two), 1)
+)
+```
+
+*Your answer:* The 23–27 man goes from **0.565** to **0.605**, a change of **+4.1 percentage points**. The 48-or-older man goes from **0.179** to **0.205**, a change of **+2.6 points**. The two changes differ because the model is constant on the odds, not on the probability: one more arrest multiplies both men's odds by the same 1.18, but the same multiplicative step translates into a bigger jump in probability when you start near 0.5, and a smaller one out at the low end where the logistic curve has flattened. Starting level matters too — the older man begins much lower because every older age category has an odds ratio below 1.
+
+**3.3** Improve the model.
+
+```{r}
+#| label: my-model
+my_fit <- glm(recid ~ male + age_group + prison_years +
+                prior_fel_arrests + prior_misd_arrests +
+                offense + sup_level +
+                Prior_Revocations_Parole + Prior_Revocations_Probation + Dependents,
+              family = binomial, data = train)
+summary(my_fit)
+```
+
+*Your answer:* I added four things, all known at release: **prison offense**, **supervision level at the start**, **prior parole and probation revocations**, and **dependents**. Offense and supervision level both have blanks, so I kept the blanks as their own `"Missing"` level rather than letting `glm()` throw people away — the model still uses all 18,028 training rows. I expected offense to help because the type of crime shapes the reentry path; supervision level because the department's own initial judgment already encodes a lot; prior revocations because failing supervision before is a direct signal of the same behavior coming back; and dependents because family ties usually pull risk down. The fit improved modestly: AIC went from 21,966 to 21,856.
+
+# Part 4: Choosing a threshold
+
+**4.1** Add `p_hat` and `pred_50` to `test`, then make a confusion matrix and compute sensitivity and specificity.
+
+```{r}
+#| label: q41
+test <- test %>%
+  mutate(p_hat  = predict(my_fit, newdata = test, type = "response"),
+         pred_50 = as.integer(p_hat >= 0.5))
+
+conf_matrix <- table(predicted = test$pred_50, actual = test$recid)
+conf_matrix
+
+TP <- sum(test$pred_50 == 1 & test$recid == 1)
+TN <- sum(test$pred_50 == 0 & test$recid == 0)
+FP <- sum(test$pred_50 == 1 & test$recid == 0)
+FN <- sum(test$pred_50 == 0 & test$recid == 1)
+
+tibble(
+  sensitivity = TP / (TP + FN),
+  specificity = TN / (TN + FP)
+)
+```
+
+*Your answer:* Sensitivity is **0.818** and specificity is **0.461**. The confusion matrix is 1,532 true negatives, 1,792 false positives, 815 false negatives, and 3,668 true positives.
+
+**4.2** What share does the model label "high risk" at 0.5, compared to the share actually rearrested?
+
+```{r}
+#| label: q42
+tibble(
+  share_flagged_high_risk = mean(test$pred_50),
+  share_actually_rearrested = mean(test$recid),
+  mean_predicted_probability = mean(test$p_hat)
+)
+```
+
+*Your answer:* The model flags **69.9%** of the test set as high risk, while only **57.4%** were actually rearrested. That is the giveaway that 0.5 is the wrong default here: with a 57% base rate, a well-calibrated model puts the average person at about 0.58, so "above 0.5" ends up meaning "above average", not "high risk". Two out of three people get the restrictive label.
+
+**4.3** Sensitivity and specificity for every threshold from 0.30 to 0.80.
+
+```{r}
+#| label: q43
+thresholds <- seq(0.30, 0.80, by = 0.05)
+
+sweep <- map_dfr(thresholds, function(t) {
+  pred <- as.integer(test$p_hat >= t)
+  tibble(threshold = t,
+         sensitivity = sum(pred == 1 & test$recid == 1) / sum(test$recid == 1),
+         specificity = sum(pred == 0 & test$recid == 0) / sum(test$recid == 0))
+})
+
+sweep %>% mutate(across(where(is.numeric), ~ round(.x, 3))) %>% print()
+```
+
+```{r}
+#| label: q43-plot
+#| fig-height: 3.6
+sweep %>%
+  pivot_longer(c(sensitivity, specificity),
+               names_to = "measure", values_to = "rate") %>%
+  ggplot(aes(x = threshold, y = rate, color = measure)) +
+  geom_line(linewidth = 0.9) + geom_point(size = 1.8) +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
+  labs(x = "Threshold", y = "Rate", color = NULL,
+       title = "Sensitivity and specificity trade off") +
+  theme_minimal()
+```
+
+**4.4** ROC curve and AUC.
+
+```{r}
+#| label: q44
+roc_obj <- roc(test$recid, test$p_hat, quiet = TRUE)
+as.numeric(auc(roc_obj))
+```
+
+```{r}
+#| label: q44-plot
+#| fig-height: 3.6
+plot(roc_obj, col = "#2c7fb8", main = "ROC, my_fit on test")
+```
+
+*Your answer:* The AUC is **0.706**. It tells me the ranking is real: if I pick one person who was rearrested and one who wasn't at random, the model gives the rearrested one a higher score about 71% of the time. What it does **not** tell me is anything about the decision the department has to make, because AUC is threshold-free — it never says how many false positives you buy to catch how many true positives, and that trade is the whole decision.
+
+# Part 5: Is it race-blind?
+
+**5.1** At 0.5, by race: share labeled high risk, share actually rearrested, false positive rate, false negative rate.
+
+```{r}
+#| label: q51
+by_race <- test %>%
+  group_by(Race) %>%
+  summarise(
+    n          = n(),
+    share_high = mean(pred_50),
+    actual     = mean(recid),
+    fpr        = sum(pred_50 == 1 & recid == 0) / sum(recid == 0),
+    fnr        = sum(pred_50 == 0 & recid == 1) / sum(recid == 1)
+  )
+by_race %>% mutate(across(where(is.numeric), ~ round(.x, 3))) %>% print()
+```
+
+*Your answer:* At 0.5 the model flags **72.7%** of Black parolees and **66.1%** of white ones. The false positive rate — flagged high risk but not rearrested, out of everyone not rearrested — is **58.1% for Black parolees and 48.3% for white parolees**, a gap of about 10 points. The false negative rate runs the other way: **16.8% for Black, 20.2% for white**. Same model, no race column, different error rates.
+
+**5.2** Repeat at two other thresholds.
+
+```{r}
+#| label: q52
+by_race_at <- function(t) {
+  test %>%
+    mutate(pred_t = as.integer(p_hat >= t)) %>%
+    group_by(Race) %>%
+    summarise(threshold = t,
+              share_high = round(mean(pred_t), 3),
+              actual     = round(mean(recid), 3),
+              fpr        = round(sum(pred_t == 1 & recid == 0) / sum(recid == 0), 3),
+              fnr        = round(sum(pred_t == 0 & recid == 1) / sum(recid == 1), 3),
+              .groups = "drop")
+}
+
+bind_rows(by_race_at(0.35), by_race_at(0.65)) %>% print()
+```
+
+*Your answer:* At **0.35** the false positive rate gap is 79.9% versus 69.9%, about 10 points, but at **0.65** it shrinks to 28.8% versus 22.4%, about 6 points. So the gap **narrows as the threshold rises but never closes, and it never flips direction** — Black parolees are always more likely to be falsely flagged and less likely to be missed. Tightening the cutoff reduces the damage but doesn't remove the asymmetry.
+
+**5.3** Investigate at least two candidates by comparing distributions by race.
+
+```{r}
+#| label: q53-age
+#| fig-height: 3.4
+age_share <- test %>%
+  count(Race, age_group) %>%
+  group_by(Race) %>% mutate(share = n / sum(n)) %>% ungroup()
+
+ggplot(age_share, aes(x = age_group, y = share, fill = Race)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = NULL, y = "Share of group", fill = "Race",
+       title = "Age at release by race") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 30, hjust = 1))
+```
+
+```{r}
+#| label: q53-offense
+#| fig-height: 3.4
+off_share <- test %>%
+  count(Race, offense) %>%
+  group_by(Race) %>% mutate(share = n / sum(n)) %>% ungroup()
+
+ggplot(off_share, aes(x = offense, y = share, fill = Race)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = NULL, y = "Share of group", fill = "Race",
+       title = "Prison offense by race") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 30, hjust = 1))
+```
+
+*Your answer:* Two candidates carry the difference.
+
+**Age.** Black parolees are younger on average: 9.6% are in the 18–22 group against 5.3% of white parolees, and only 12.7% are 48-or-older against 15.6% of white parolees. Age is one of the strongest protective factors in the model, so a younger group mechanically collects more predicted risk.
+
+**Prison offense.** Black parolees are far more likely to have a violent/non-sex offense (26.2% versus 14.9%), while white parolees are more likely to have a property offense (36.6% versus 28.5%) or a drug offense (23.6% versus 17.6%). Those offense categories do not have identical coefficients, so the mix shifts predicted probability.
+
+Prior felony arrests, by contrast, are nearly identical across groups (mean 5.70 for Black, 5.84 for white), so that variable is *not* doing the work — which is worth knowing, because it's the one people usually blame.
+
+Place is a third candidate: `puma`'s Black share ranges from 14% to 89% across the 25 groups, which matters for Part 6.
+
+# Part 6: Does it hold up in places it hasn't seen?
+
+```{r}
+#| label: lopuma
+pumas <- levels(train$puma)
+
+cv_puma <- map_dfr(pumas, function(u) {
+  cv_train <- train %>% filter(puma != u)
+  cv_test  <- train %>% filter(puma == u)
+
+  fit <- glm(formula(my_fit), family = binomial, data = cv_train)
+
+  cv_test %>%
+    mutate(pred = as.integer(predict(fit, newdata = cv_test,
+                                     type = "response") >= 0.5)) %>%
+    summarize(puma       = u,
+              n          = n(),
+              share_black = mean(Race == "BLACK"),
+              accuracy   = mean(pred == recid),
+              fpr        = sum(pred == 1 & recid == 0) / sum(recid == 0),
+              .groups = "drop")
+})
+
+cv_puma %>% mutate(across(c(share_black, accuracy, fpr), ~ round(.x, 3))) %>% print()
+```
+
+**6.1** Plot each PUMA group's false positive rate against its share of Black parolees.
+
+```{r}
+#| label: q61
+#| fig-height: 3.8
+ggplot(cv_puma, aes(x = share_black, y = fpr)) +
+  geom_point(size = 2.4, alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, color = "#b2182b") +
+  scale_x_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Share of Black parolees in the PUMA group",
+       y = "False positive rate", title = "FPR vs. racial composition, by place") +
+  theme_minimal()
+```
+
+*Your answer:* There is a weak positive pattern, not a clean line. Across the 25 groups the false positive rate runs from **40.5% to 62.6%** with a mean of 53.1%, and its correlation with the group's Black share is only **0.41**. The places with the most Black parolees (groups 6, 11, 10, with 87%, 81%, 72%) land at 53.5%, 54.2%, and 62.6%; the whitest groups (17 at 14%, 24 at 14%) land at 44.9% and 40.5%. So the direction is consistent — Blacker places get more false positives — but the scatter is wide enough that place alone doesn't explain the gap.
+
+**6.2** Would putting `puma` itself into the model make it more or less race-blind?
+
+*Your answer:* Less. `puma` is not a race-neutral variable in this data — its Black share ranges from 14% to 89%, and I just showed that the false positive rate tracks that share (r = 0.41). If `puma` enters the model, a person's predicted probability would shift according to the racial composition of their neighborhood even though `Race` is still absent from the formula. The promise "we don't use race" would then be cosmetic: the model would be using race indirectly, through geography, and it would also overfit 25 place dummies that carry little signal of their own.
+
+# Part 7: The memo
+
+**Memo to:** Deputy Commissioner, Georgia Department of Community Supervision
+**From:** Manching Ho, MUSA 5080
+**Re:** Threshold choice and the meaning of "race-blind"
+
+**Threshold for Use A (restrictive supervision): 0.65.** Here the false positive is the expensive error — it means more check-ins, monitoring, and faster revocation for someone who would not have reoffended, and that cost is paid in liberty. At 0.65 the model's sensitivity is 53.7% and its specificity is 74.0%: we accept missing about half of the people who will reoffend in exchange for not over-supervising the three-quarters who won't. I would not go lower. At 0.50 the model labels 69.9% of everyone "high risk" when only 57.4% actually reoffend, which turns restrictive supervision into the default condition of parole. At 0.75 the opposite failure appears: sensitivity falls to 26.6%, so we would miss three-quarters of the people who reoffend just to keep the flagged group small.
+
+**Threshold for Use B (reentry services): 0.35.** The errors are reversed here. A false positive wastes a slot on someone who would have been fine; a false negative withholds housing or a job from someone who then returns to prison. At 0.35 sensitivity is 94.1% — we reach almost everyone who will reoffend — at a specificity of 24.4%. Offering services too broadly is a budget problem; offering them too narrowly is a public safety and human problem. At 0.50 nearly seven in ten people would qualify, which is not a service program so much as a mailing list. I would accept the low specificity.
+
+**"Doesn't use race" is not the same as "treats people the same."** Race is not in the formula, yet at the 0.50 cutoff the false positive rate is 58.1% for Black parolees and 48.3% for white parolees — roughly ten points. At 0.65 the gap narrows to 28.8% versus 22.4%, but it does not disappear, and it does not flip. The mechanism is the predictors, not the race column: Black parolees in this data are younger (9.6% in the 18–22 group versus 5.3%) and more often have a violent offense (26.2% versus 14.9%), and age and offense are exactly what move the score. Removing `Race` from the formula removes the label, not the disparity.
+
+**I would not deploy this for Use A unless** the department publishes false positive rates by race at the operating threshold, sets a ceiling on the gap, and audits each PUMA group separately — because placing `puma` in the model would smuggle race back in through geography.
+
+# Optional challenge
+
+```{r}
+#| label: optional
+test %>%
+  mutate(state_high = as.integer(Supervision_Risk_Score_First >= 7)) %>%
+  group_by(Race) %>%
+  summarise(
+    share_high = round(mean(state_high, na.rm = TRUE), 3),
+    fpr        = round(sum(state_high == 1 & recid == 0, na.rm = TRUE) / sum(recid == 0), 3),
+    fnr        = round(sum(state_high == 0 & recid == 1, na.rm = TRUE) / sum(recid == 1), 3),
+    .groups = "drop"
+  ) %>%
+  print()
+```
+
+The state's existing tool flags 45.6% of Black parolees and 42.7% of white parolees, with false positive rates of 36.7% and 33.2% — a gap of about 3.5 points, narrower than my model's ten. On this one measure the state's tool looks *more* balanced, but it also flags far fewer people overall, so it is likely trading away sensitivity. A narrower racial gap in false positives is not automatically a better tool; it depends what it misses.
